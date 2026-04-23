@@ -7,33 +7,9 @@
 <meta name="description" content="12 de agosto de 2026. Vive el eclipse solar total desde el desierto de Tabernas. Barbacoa, espectáculo, Perseidas y pernocta bajo el cielo más oscuro de Europa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rye&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ────────────────────────────────────────────
-     TIPOGRAFÍAS PROPIAS
-     Sube los archivos .ttf a una carpeta /fonts
-     junto a este HTML y funcionará automáticamente.
-     ──────────────────────────────────────────── */
-  @font-face {
-    font-family: 'IFC Insane Rodeo';
-    src: url('fonts/IFCInsaneRodeoBold.ttf') format('truetype'),
-         url('fonts/IFC_INSANE_RODEO_BOLD.ttf') format('truetype'),
-         url('fonts/IFC-Insane-Rodeo-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'IFC Insane Rodeo';
-    src: url('fonts/IFCInsaneRodeo.ttf') format('truetype'),
-         url('fonts/IFC_INSANE_RODEO.ttf') format('truetype'),
-         url('fonts/IFC-Insane-Rodeo.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -55,7 +31,7 @@
     --text-dim: #8898bb;
     --border: rgba(192,56,40,0.22);
     --border-gold: rgba(212,144,58,0.22);
-    --font-western: 'IFC Insane Rodeo', 'Rye', serif;
+    --font-western: 'Rye', 'Alfa Slab One', serif;
     --nav-h: 68px;
   }
 
@@ -283,25 +259,25 @@
   .shooting-star.s2 { top: 28%; right: 42%; animation: shoot 11s linear infinite 3.5s; }
   .shooting-star.s3 { top: 8%; right: 72%; animation: shoot 14s linear infinite 7s; }
   @keyframes shoot {
-    0% { transform: translate(0,0); opacity: 0; }
+    0% { transform: translate(0,0) rotate(147deg); opacity: 0; }
     3% { opacity: 1; }
-    18% { transform: translate(-260px, 170px); opacity: 0; }
-    100% { transform: translate(-260px, 170px); opacity: 0; }
+    18% { transform: translate(-260px, 170px) rotate(147deg); opacity: 0; }
+    100% { transform: translate(-260px, 170px) rotate(147deg); opacity: 0; }
   }
 
   /* Eclipse / Moon — más grande */
   .eclipse-wrap {
-    position: absolute; top: -10vw; left: 50%; transform: translateX(-50%);
-    width: 75vw; max-width: 860px;
+    position: absolute; top: -12vw; left: 50%; transform: translateX(-50%);
+    width: 88vw; max-width: 1020px;
     aspect-ratio: 1;
     z-index: 1;
     pointer-events: none;
   }
   @media (max-width: 900px) {
-    .eclipse-wrap { width: 88vw; top: -12vw; }
+    .eclipse-wrap { width: 96vw; top: -15vw; }
   }
   @media (max-width: 600px) {
-    .eclipse-wrap { width: 96vw; top: -14vw; }
+    .eclipse-wrap { width: 100vw; top: -18vw; }
   }
 
   .eclipse-corona {
@@ -593,44 +569,6 @@
     .tl-item .tl-dot { grid-column: 1; grid-row: 1; }
   }
 
-  /* ── EXPERIENCIAS ── */
-  #experiencias {
-    padding: 7rem 0;
-    background: var(--bg);
-  }
-  @media (max-width: 768px) { #experiencias { padding: 4rem 0; } }
-  .exp-header { margin-bottom: 3.5rem; }
-  .features-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
-  .feature-card {
-    background: var(--sky1);
-    padding: 2.5rem 2rem;
-    position: relative; overflow: hidden;
-    transition: background 0.3s;
-  }
-  .feature-card:nth-child(even) { background: #0c0a08; }
-  .feature-card:hover { background: #0f1a3d; }
-  .feature-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(to right, transparent, var(--brand), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .feature-card:hover::before { opacity: 1; }
-  .feature-icon {
-    width: 48px; height: 48px;
-    border: 1px solid var(--border); border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 1.5rem;
-    background: rgba(73,16,16,0.15);
-  }
-  .feature-title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--text); }
-  .feature-desc { font-size: 0.82rem; line-height: 1.75; color: var(--text-dim); }
-
   /* ── ALOJAMIENTO ── */
   #alojamiento {
     padding: 7rem 0;
@@ -653,7 +591,6 @@
     text-transform: uppercase; color: #fff;
     background: var(--brand); padding: 0.3rem 0.7rem;
   }
-  .aloj-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
   .aloj-name { font-family: var(--font-western); font-weight: 700; font-size: 1.7rem; margin-bottom: 0.5rem; color: var(--text); letter-spacing: 0.02em; }
   .aloj-tagline { font-size: 0.78rem; color: var(--brand-light); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
   .aloj-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 2rem; }
@@ -743,7 +680,6 @@
   <ul class="nav-links">
     <li><a href="#eclipse">El eclipse</a></li>
     <li><a href="#programa">Programa</a></li>
-    <li><a href="#experiencias">Experiencias</a></li>
     <li><a href="#alojamiento">Alojamiento</a></li>
   </ul>
   <div class="nav-right">
@@ -759,7 +695,6 @@
   <ul class="mobile-menu-nav">
     <li><a href="#eclipse" class="mobile-link">El eclipse</a></li>
     <li><a href="#programa" class="mobile-link">Programa</a></li>
-    <li><a href="#experiencias" class="mobile-link">Experiencias</a></li>
     <li><a href="#alojamiento" class="mobile-link">Alojamiento</a></li>
   </ul>
   <div class="mobile-menu-footer">
@@ -890,47 +825,65 @@
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-content">
-          <div class="tl-time">18:00 h</div>
-          <div class="tl-title">Bienvenida en el Saloon</div>
-          <div class="tl-desc">Check-in, entrega de gafas certificadas ISO para la observación solar y copa de bienvenida en el poblado western.</div>
+          <div class="tl-time">17:30 – 20:00 h</div>
+          <div class="tl-title">Visita el Parque</div>
+          <div class="tl-desc">Explora el escenario natural más cinematográfico del mundo antes de que caiga la noche. Calles del Oeste, decorados históricos y el desierto como telón de fondo.</div>
         </div>
-        <div class="tl-dot">🤠</div>
+        <div class="tl-dot">🌵</div>
         <div class="tl-empty"></div>
       </div>
       <div class="tl-item">
         <div class="tl-empty"></div>
-        <div class="tl-dot">🌅</div>
+        <div class="tl-dot">👨‍👩‍👧</div>
         <div class="tl-content">
-          <div class="tl-time">19:00 h</div>
-          <div class="tl-title">Cena barbacoa al atardecer</div>
-          <div class="tl-desc">Parrilla al estilo del Oeste con carnes, guarniciones y música en directo para ambientar las primeras horas de la noche.</div>
+          <div class="tl-time">18:00 – 20:00 h</div>
+          <div class="tl-title">Talleres en Familia</div>
+          <div class="tl-desc">Actividades para los más pequeños: lanzamiento de lazo, tiro con arco y los secretos del Lejano Oeste al atardecer.</div>
         </div>
       </div>
+      <div class="tl-item">
+        <div class="tl-content">
+          <div class="tl-time">18:00 h</div>
+          <div class="tl-title">Encuentro con Aves</div>
+          <div class="tl-desc">Demostración de cetrería y exhibición de rapaces. Una experiencia única bajo el cielo abierto del desierto de Tabernas.</div>
+        </div>
+        <div class="tl-dot">🦅</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">💃</div>
+        <div class="tl-content">
+          <div class="tl-time">19:00 h</div>
+          <div class="tl-title">Espectáculo Cancán en el Saloon</div>
+          <div class="tl-desc">Las bailarinas del Saloon llenan la noche de color, ritmo y el auténtico espíritu del Lejano Oeste.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-content">
+          <div class="tl-time">20:00 h</div>
+          <div class="tl-title">Espectáculo Western</div>
+          <div class="tl-desc">Acrobacias ecuestres, pistoleros y el show más auténtico del Oeste. El espectáculo que convirtió este parque en leyenda.</div>
+        </div>
+        <div class="tl-dot">🤠</div>
+        <div class="tl-empty"></div>
+      </div>
       <div class="tl-item highlight">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">🌑</div>
         <div class="tl-content">
           <div class="tl-time">20:15 – 21:00 h</div>
           <div class="tl-title">★ El Eclipse Solar</div>
           <div class="tl-desc">Observación guiada por astrónomo. Punto álgido a las 20:32h con el sol eclipsado rozando el horizonte del desierto de Tabernas.</div>
         </div>
-        <div class="tl-dot">🌑</div>
-        <div class="tl-empty"></div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-empty"></div>
-        <div class="tl-dot">🎭</div>
-        <div class="tl-content">
-          <div class="tl-time">21:30 h</div>
-          <div class="tl-title">Espectáculo nocturno</div>
-          <div class="tl-desc">Show acrobático y ecuestre en la oscuridad del desierto. Fuego, música y magia western bajo el cielo estrellado.</div>
-        </div>
       </div>
       <div class="tl-item">
         <div class="tl-content">
-          <div class="tl-time">23:00 h</div>
-          <div class="tl-title">Baile country & line dancing</div>
-          <div class="tl-desc">Hoguera, música country en directo y pista de baile. La Noche en el Desierto sigue siendo una fiesta.</div>
+          <div class="tl-time">21:00 h</div>
+          <div class="tl-title">Cena Barbacoa</div>
+          <div class="tl-desc">Gran parrilla bajo las estrellas con menú completo: carnes, guarniciones y postres. Amenizada con música country en directo.</div>
         </div>
-        <div class="tl-dot">💃</div>
+        <div class="tl-dot">🔥</div>
         <div class="tl-empty"></div>
       </div>
       <div class="tl-item highlight">
@@ -955,50 +908,6 @@
   </div>
 </section>
 
-<!-- EXPERIENCIAS -->
-<section id="experiencias">
-  <div class="section-inner">
-    <div class="exp-header reveal">
-      <p class="section-label">Qué incluye</p>
-      <h2 class="section-title">La experiencia completa</h2>
-    </div>
-    <div class="features-grid reveal">
-      <div class="feature-card">
-        <div class="feature-icon">🔥</div>
-        <div class="feature-title">Cena Barbacoa</div>
-        <div class="feature-desc">Gran barbacoa bajo las estrellas con menú completo: entrantes, carnes a la brasa, guarniciones, postres y bebidas incluidas.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌑</div>
-        <div class="feature-title">Observación del Eclipse</div>
-        <div class="feature-desc">Sesión guiada de astronomía con gafas certificadas ISO 12312-2. El astrónomo te explicará el fenómeno en tiempo real.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">✦</div>
-        <div class="feature-title">Lluvia de Perseidas</div>
-        <div class="feature-desc">Noche del máximo de las Perseidas. Observación nocturna con telescopios bajo uno de los cielos más oscuros de Europa.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎭</div>
-        <div class="feature-title">Espectáculo Nocturno</div>
-        <div class="feature-desc">Show acrobático exclusivo con fuego, caballos y música en la oscuridad del parque temático más auténtico del mundo.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤠</div>
-        <div class="feature-title">Talleres & Actividades</div>
-        <div class="feature-desc">Talleres de baile country, lanzamiento de lazo, tiro con arco y actividades del Lejano Oeste al atardecer.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💃</div>
-        <div class="feature-title">Baile Line Dancing</div>
-        <div class="feature-desc">Música country en directo y pista de baile hasta la madrugada. Line dancing, country clásico y mucho más.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="star-divider">★ ★ ★</div>
-
 <!-- ALOJAMIENTO -->
 <section id="alojamiento">
   <div class="section-inner">
@@ -1009,7 +918,6 @@
     </div>
     <div class="aloj-layout reveal">
       <div class="aloj-card">
-        <span class="aloj-icon">🛌</span>
         <div class="aloj-name">Saco de Dormir</div>
         <div class="aloj-tagline">Bajo las estrellas</div>
         <p class="aloj-desc">La experiencia más auténtica. Duérmete mirando el cielo, sin techo, rodeado del silencio del desierto de Tabernas.</p>
@@ -1024,7 +932,6 @@
       </div>
       <div class="aloj-card featured">
         <div class="aloj-badge">Recomendado</div>
-        <span class="aloj-icon">🚐</span>
         <div class="aloj-name">Caravana / Autocaravana</div>
         <div class="aloj-tagline">Confort en el desierto</div>
         <p class="aloj-desc">Tu casa rodante dentro del parque. Parcela privada con las mejores vistas al cielo nocturno.</p>
@@ -1054,7 +961,6 @@
         <ul>
           <li><a href="#eclipse">El eclipse</a></li>
           <li><a href="#programa">Programa</a></li>
-          <li><a href="#experiencias">Experiencias</a></li>
           <li><a href="#alojamiento">Alojamiento</a></li>
         </ul>
       </div>
