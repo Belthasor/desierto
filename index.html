@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noche en el Desierto — Bajo el Eclipse | MiniHollywood Oasys</title>
+<meta name="description" content="12 de agosto de 2026. Vive el eclipse solar total desde el desierto de Tabernas. Barbacoa, espectáculo, Perseidas y pernocta bajo el cielo más oscuro de Europa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Crimson+Text:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ────────────────────────────────────────────
+     TIPOGRAFÍAS PROPIAS
+     Sube los archivos .ttf a una carpeta /fonts
+     junto a este HTML y funcionará automáticamente.
+     ──────────────────────────────────────────── */
+  @font-face {
+    font-family: 'IFC Insane Rodeo';
+    src: url('fonts/IFCInsaneRodeoBold.ttf') format('truetype'),
+         url('fonts/IFC_INSANE_RODEO_BOLD.ttf') format('truetype'),
+         url('fonts/IFC-Insane-Rodeo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'IFC Insane Rodeo';
+    src: url('fonts/IFCInsaneRodeo.ttf') format('truetype'),
+         url('fonts/IFC_INSANE_RODEO.ttf') format('truetype'),
+         url('fonts/IFC-Insane-Rodeo.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #05070f;
+    --sky1: #090810;
+    --sky2: #0d0c18;
+    --sky3: #13214e;
+    --gold: #d4903a;
+    --gold-light: #f0b860;
+    --gold-dim: #8a5c1a;
+    --brand: #c03828;
+    --brand-dark: #491010;
+    --brand-light: #e04838;
+    --green-dark: #212E19;
+    --green-mid: #2e4022;
+    --moon-color: #ddd8c8;
+    --eclipse-red: #c04010;
+    --text: #f0ece4;
+    --text-dim: #8898bb;
+    --border: rgba(192,56,40,0.22);
+    --border-gold: rgba(212,144,58,0.22);
+    --font-western: 'IFC Insane Rodeo', 'Rye', serif;
+    --nav-h: 68px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(to bottom, rgba(5,7,15,0.97), transparent);
+    transition: background 0.4s;
+    height: var(--nav-h);
+  }
+  nav.scrolled { background: rgba(5,7,15,0.98); backdrop-filter: blur(8px); }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* Botón volver a página anterior */
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-dim);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(136,152,187,0.2);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .nav-back:hover { color: var(--gold); border-color: rgba(212,144,58,0.35); }
+  .nav-back svg { width: 12px; height: 12px; flex-shrink: 0; }
+  @media (max-width: 900px) { .nav-back .nav-back-text { display: none; } }
+  @media (max-width: 480px) {
+    .nav-back { padding: 0.3rem 0.5rem; }
+  }
+
+  .nav-logo {
+    display: block;
+    line-height: 0;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 38px;
+    width: auto;
+    display: block;
+    transition: opacity 0.2s;
+  }
+  .nav-logo:hover img { opacity: 0.85; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(240,236,228,0.8); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .nav-cta {
+    background: var(--brand); color: #fff;
+    padding: 0.5rem 1.4rem; border-radius: 2px;
+    font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--brand-light); transform: translateY(-1px); }
+
+  /* Hamburguesa */
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: 1px solid rgba(240,236,228,0.15);
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 8px 9px;
+    width: 40px;
+    height: 36px;
+    transition: border-color 0.2s;
+  }
+  .nav-burger:hover { border-color: rgba(212,144,58,0.4); }
+  .nav-burger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-logo img { height: 32px; }
+  }
+  @media (max-width: 480px) {
+    .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.62rem; }
+  }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 190;
+    background: rgba(5,7,15,0.98);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding-top: var(--nav-h);
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-menu-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+  .mobile-menu-nav li {
+    width: 100%;
+    border-bottom: 1px solid rgba(192,56,40,0.1);
+  }
+  .mobile-menu-nav li:last-child { border-bottom: none; }
+  .mobile-menu-nav a {
+    display: block;
+    text-align: center;
+    padding: 1.1rem 2rem;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+  }
+  .mobile-menu-nav a:hover { color: var(--gold); background: rgba(212,144,58,0.05); }
+  .mobile-menu-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mobile-back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-back-link:hover { color: var(--gold); }
+  .mobile-back-link svg { width: 12px; height: 12px; }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse 120% 80% at 50% 0%, #1a2d6e 0%, #0c1535 35%, #060a1a 65%, var(--bg) 100%);
+  }
+
+  #starfield { position: absolute; inset: 0; z-index: 0; }
+
+  .shooting-star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .shooting-star::after {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 90px; height: 1px;
+    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+  }
+  .shooting-star.s1 { top: 12%; right: 15%; animation: shoot 9s linear infinite; }
+  .shooting-star.s2 { top: 28%; right: 42%; animation: shoot 11s linear infinite 3.5s; }
+  .shooting-star.s3 { top: 8%; right: 72%; animation: shoot 14s linear infinite 7s; }
+  @keyframes shoot {
+    0% { transform: translate(0,0); opacity: 0; }
+    3% { opacity: 1; }
+    18% { transform: translate(-260px, 170px); opacity: 0; }
+    100% { transform: translate(-260px, 170px); opacity: 0; }
+  }
+
+  /* Eclipse / Moon — más grande */
+  .eclipse-wrap {
+    position: absolute; top: -10vw; left: 50%; transform: translateX(-50%);
+    width: 75vw; max-width: 860px;
+    aspect-ratio: 1;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @media (max-width: 900px) {
+    .eclipse-wrap { width: 88vw; top: -12vw; }
+  }
+  @media (max-width: 600px) {
+    .eclipse-wrap { width: 96vw; top: -14vw; }
+  }
+
+  .eclipse-corona {
+    position: absolute; inset: -18%;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 38%, rgba(180,80,10,0.18) 48%, rgba(220,120,20,0.12) 58%, rgba(200,100,15,0.05) 70%, transparent 80%);
+    animation: pulseCorona 4s ease-in-out infinite;
+  }
+  .eclipse-corona-2 {
+    position: absolute; inset: -28%;
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 44%, rgba(150,60,5,0.08) 54%, transparent 70%);
+    animation: pulseCorona 4s ease-in-out infinite 1s;
+  }
+  .moon-body {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, #e8e4d8 0%, #ccc8b8 30%, #9a9488 65%, #6a6458 85%, #3a3430 100%);
+    box-shadow: inset -18px -12px 40px rgba(0,0,0,0.6), 0 0 60px rgba(200,160,80,0.15);
+    overflow: hidden;
+  }
+  .moon-image {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .moon-image.loaded { opacity: 1; }
+  .moon-body.has-image {
+    background: transparent;
+    box-shadow: 0 0 60px rgba(200,160,80,0.15);
+  }
+  .eclipse-shadow {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 72% 50%, rgba(20,20,30,0.92) 0%, rgba(10,10,18,0.85) 30%, transparent 60%);
+    mix-blend-mode: multiply;
+    animation: eclipseMove 12s ease-in-out infinite;
+    z-index: 2;
+  }
+  .moon-glow {
+    position: absolute; inset: -8%;
+    border-radius: 50%;
+    box-shadow: 0 0 80px 20px rgba(200,160,80,0.12), 0 0 160px 60px rgba(180,120,50,0.06);
+  }
+
+  @keyframes pulseCorona {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+  }
+  @keyframes eclipseMove {
+    0%, 100% { clip-path: circle(50% at 72% 50%); opacity: 0.75; }
+    50% { clip-path: circle(50% at 68% 50%); opacity: 0.85; }
+  }
+
+  /* Horizon silhouette */
+  .horizon {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    height: 32vh;
+    background: linear-gradient(to top, #05070f 0%, #05070f 40%, transparent 100%);
+  }
+  .silhouette-desert {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 28vh;
+  }
+  .silhouette-desert svg { width: 100%; height: 100%; }
+
+  /* Hero content */
+  .hero-content {
+    position: relative; z-index: 3;
+    text-align: center;
+    padding: 0 1.5rem;
+    margin-top: 14vw;
+  }
+  @media (max-width: 900px) { .hero-content { margin-top: 18vw; } }
+  @media (max-width: 600px) { .hero-content { margin-top: 22vw; padding: 0 1rem; } }
+  @media (max-width: 480px) { .hero-content { margin-top: 26vw; } }
+
+  .hero-cabecera {
+    display: block;
+    margin: 0 auto;
+    width: clamp(280px, 62vw, 760px);
+    height: auto;
+    filter: drop-shadow(0 4px 40px rgba(0,0,0,0.8)) drop-shadow(0 0 80px rgba(200,160,80,0.15));
+  }
+  @media (max-width: 600px) {
+    .hero-cabecera { width: clamp(240px, 88vw, 480px); }
+  }
+
+  /* "Bajo el Eclipse" — sin cursiva */
+  .hero-lema {
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2.4vw, 2rem);
+    color: var(--gold-light);
+    margin: 1.4rem 0 0.5rem;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 20px rgba(210,140,50,0.4);
+  }
+
+  .hero-date-badge {
+    display: inline-flex; align-items: center; gap: 1rem;
+    margin: 1.8rem auto 0;
+    padding: 0.7rem 2rem;
+    border: 1px solid rgba(192,56,40,0.3);
+    background: rgba(73,16,16,0.15);
+    backdrop-filter: blur(8px);
+  }
+  .hero-date-badge .date-num {
+    font-size: 2.5rem; font-weight: 800; color: var(--gold);
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+  }
+  .hero-date-badge .date-text { text-align: left; }
+  .hero-date-badge .date-month { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); }
+  .hero-date-badge .date-year { font-size: 0.65rem; font-weight: 400; color: var(--text-dim); letter-spacing: 0.15em; }
+  .hero-date-badge .divider { width: 1px; height: 36px; background: rgba(192,56,40,0.3); }
+  .hero-date-badge .location { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); text-align: left; line-height: 1.6; }
+  .hero-date-badge .location strong { display: block; color: var(--text); font-size: 0.8rem; }
+
+  @media (max-width: 600px) {
+    .hero-date-badge { flex-direction: column; gap: 0.8rem; padding: 1rem 1.5rem; }
+    .hero-date-badge .divider { display: none; }
+    .hero-date-badge .date-text, .hero-date-badge .location { text-align: center; }
+  }
+
+  .hero-cta-row { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--brand); color: #fff;
+    padding: 0.9rem 2.5rem; border: none; cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 30px rgba(192,56,40,0.35);
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-primary:hover { background: var(--brand-light); transform: translateY(-2px); box-shadow: 0 8px 40px rgba(192,56,40,0.5); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    padding: 0.9rem 2.5rem; border: 1px solid rgba(240,236,228,0.3); cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  @media (max-width: 480px) {
+    .btn-primary, .btn-secondary { padding: 0.8rem 1.8rem; font-size: 0.7rem; }
+  }
+
+  .hero-scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--text-dim); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: fadeInUp 1s ease 2s both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+
+  /* ── SECTIONS SHARED ── */
+  section { position: relative; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  @media (max-width: 600px) { .section-inner { padding: 0 1.2rem; } }
+  .section-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--brand);
+    display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem;
+  }
+  .section-label::before { content: ''; display: block; height: 1px; width: 30px; background: var(--brand); }
+  .section-title {
+    font-family: var(--font-western);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.01em;
+  }
+  .section-body { font-size: 0.95rem; line-height: 1.85; color: var(--text-dim); max-width: 58ch; }
+
+  /* ── ABOUT / ECLIPSE SECTION ── */
+  #eclipse {
+    padding: 7rem 0;
+    background: var(--bg);
+  }
+  @media (max-width: 768px) { #eclipse { padding: 4rem 0; } }
+  .eclipse-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
+  @media (max-width: 900px) { .eclipse-layout { grid-template-columns: 1fr; gap: 3rem; } }
+  .eclipse-visual {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .eclipse-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  @media (max-width: 900px) {
+    .eclipse-visual { height: 360px; }
+  }
+  @media (max-width: 480px) {
+    .eclipse-visual { height: 260px; }
+  }
+  .eclipse-text .section-body { margin-bottom: 1rem; }
+  .eclipse-facts { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .eclipse-fact {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-left: 2px solid var(--brand);
+    background: rgba(73,16,16,0.12);
+  }
+  .eclipse-fact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .eclipse-fact-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 0.2rem; }
+  .eclipse-fact-body { font-size: 0.8rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ── PROGRAMA ── */
+  #programa {
+    padding: 7rem 0;
+    background: linear-gradient(to bottom, var(--bg) 0%, var(--sky1) 50%, var(--bg) 100%);
+  }
+  @media (max-width: 768px) { #programa { padding: 4rem 0; } }
+  .programa-header { text-align: center; margin-bottom: 4rem; }
+  .programa-header .section-label { justify-content: center; }
+  .programa-header .section-label::before { display: none; }
+  .programa-header .section-body { margin: 0 auto; }
+  .timeline {
+    position: relative; max-width: 780px; margin: 0 auto;
+  }
+  .timeline::before {
+    content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+    transform: translateX(-50%);
+  }
+  .tl-item {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;
+    margin-bottom: 2.5rem;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .tl-item.visible { opacity: 1; transform: none; }
+  .tl-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; }
+  .tl-item:nth-child(odd) .tl-empty { grid-column: 3; }
+  .tl-item:nth-child(even) .tl-content { grid-column: 3; text-align: left; }
+  .tl-item:nth-child(even) .tl-empty { grid-column: 1; }
+  .tl-dot {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--sky1); border: 2px solid var(--brand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(192,56,40,0.3);
+  }
+  .tl-item.highlight .tl-dot {
+    background: var(--brand);
+    box-shadow: 0 0 30px rgba(192,56,40,0.7);
+    animation: highlightPulse 2s ease-in-out infinite;
+  }
+  @keyframes highlightPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(192,56,40,0.5); }
+    50% { box-shadow: 0 0 40px rgba(230,100,60,0.9); }
+  }
+  .tl-time {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--brand); margin-bottom: 0.3rem;
+  }
+  .tl-item.highlight .tl-time { color: var(--gold-light); }
+  .tl-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
+  .tl-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.65; }
+
+  @media (max-width: 720px) {
+    .timeline::before { left: 22px; }
+    .tl-item { grid-template-columns: 44px 1fr; gap: 1.2rem; }
+    .tl-item:nth-child(odd) .tl-content,
+    .tl-item:nth-child(even) .tl-content { grid-column: 2; text-align: left; }
+    .tl-item:nth-child(odd) .tl-empty,
+    .tl-item:nth-child(even) .tl-empty { display: none; }
+    .tl-item .tl-dot { grid-column: 1; grid-row: 1; }
+  }
+
+  /* ── EXPERIENCIAS ── */
+  #experiencias {
+    padding: 7rem 0;
+    background: var(--bg);
+  }
+  @media (max-width: 768px) { #experiencias { padding: 4rem 0; } }
+  .exp-header { margin-bottom: 3.5rem; }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
+  .feature-card {
+    background: var(--sky1);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .feature-card:nth-child(even) { background: #0c0a08; }
+  .feature-card:hover { background: #0f1a3d; }
+  .feature-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--brand), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 48px; height: 48px;
+    border: 1px solid var(--border); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.5rem;
+    background: rgba(73,16,16,0.15);
+  }
+  .feature-title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--text); }
+  .feature-desc { font-size: 0.82rem; line-height: 1.75; color: var(--text-dim); }
+
+  /* ── ALOJAMIENTO ── */
+  #alojamiento {
+    padding: 7rem 0;
+    background: linear-gradient(135deg, #07091a 0%, #0c1430 50%, #07091a 100%);
+  }
+  @media (max-width: 768px) { #alojamiento { padding: 4rem 0; } }
+  .aloj-header { margin-bottom: 3rem; }
+  .aloj-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3.5rem; background: rgba(192,56,40,0.2); }
+  @media (max-width: 900px) { .aloj-layout { grid-template-columns: 1fr; } }
+  .aloj-card {
+    background: var(--sky1);
+    padding: 3rem 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  @media (max-width: 480px) { .aloj-card { padding: 2rem 1.5rem; } }
+  .aloj-card.featured { background: #180c0c; }
+  .aloj-badge {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #fff;
+    background: var(--brand); padding: 0.3rem 0.7rem;
+  }
+  .aloj-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .aloj-name { font-family: var(--font-western); font-weight: 700; font-size: 1.7rem; margin-bottom: 0.5rem; color: var(--text); letter-spacing: 0.02em; }
+  .aloj-tagline { font-size: 0.78rem; color: var(--brand-light); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .aloj-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.75; margin-bottom: 2rem; }
+  .aloj-includes { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .aloj-includes li { font-size: 0.82rem; color: var(--text-dim); display: flex; align-items: flex-start; gap: 0.6rem; }
+  .aloj-includes li::before { content: '—'; color: var(--brand); flex-shrink: 0; }
+
+  /* ── DIVIDER STARS ── */
+  .star-divider {
+    text-align: center; padding: 2rem 0;
+    color: var(--brand-dark); font-size: 0.6rem; letter-spacing: 1.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 4rem 2rem 2rem;
+    background: #03040a;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .footer-logo { height: 52px; width: auto; display: block; margin-bottom: 1rem; }
+  .footer-tagline { font-size: 0.78rem; color: var(--text-dim); max-width: 30ch; line-height: 1.7; }
+  .footer-col h4 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--brand-light); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul li { font-size: 0.8rem; color: var(--text-dim); }
+  .footer-col ul li a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--text); }
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { font-size: 0.7rem; color: var(--text-dim); }
+  .footer-bottom a { color: var(--brand-light); text-decoration: none; }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 300;
+    width: 44px;
+    height: 44px;
+    background: var(--brand);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(192,56,40,0.4);
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .back-to-top:hover { background: var(--brand-light); }
+  .back-to-top svg { width: 18px; height: 18px; color: #fff; }
+  @media (max-width: 768px) {
+    .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-left">
+    <a href="https://minihollywoodoasys.com/fechas-especiales/" class="nav-back" aria-label="Volver a Fechas Especiales">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <span class="nav-back-text">Fechas especiales</span>
+    </a>
+    <a href="#hero" class="nav-logo" aria-label="MiniHollywood Oasys Theme Park">
+      <img src="Logo_Minihollywood_Oasys_Theme_Park_2025-BLANCO.png" alt="MiniHollywood Oasys Theme Park">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#eclipse">El eclipse</a></li>
+    <li><a href="#programa">Programa</a></li>
+    <li><a href="#experiencias">Experiencias</a></li>
+    <li><a href="#alojamiento">Alojamiento</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://minihollywoodoasys.com" target="_blank" class="nav-cta">Reservar</a>
+    <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación">
+  <ul class="mobile-menu-nav">
+    <li><a href="#eclipse" class="mobile-link">El eclipse</a></li>
+    <li><a href="#programa" class="mobile-link">Programa</a></li>
+    <li><a href="#experiencias" class="mobile-link">Experiencias</a></li>
+    <li><a href="#alojamiento" class="mobile-link">Alojamiento</a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary mobile-link" style="font-size:0.75rem;">Reservar plaza</a>
+    <a href="https://minihollywoodoasys.com/fechas-especiales/" class="mobile-back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver a Fechas Especiales
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="starfield"></canvas>
+
+  <div class="shooting-star s1"></div>
+  <div class="shooting-star s2"></div>
+  <div class="shooting-star s3"></div>
+
+  <div class="eclipse-wrap">
+    <div class="eclipse-corona-2"></div>
+    <div class="eclipse-corona"></div>
+    <div class="moon-glow"></div>
+    <div class="moon-body" id="moonBody">
+      <img src="luna.png" alt="" class="moon-image" id="moonImage" onload="this.classList.add('loaded'); document.getElementById('moonBody').classList.add('has-image');" onerror="this.style.display='none';">
+      <div class="eclipse-shadow"></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <img src="Cabecera_2026.png" alt="Noche en el Desierto" class="hero-cabecera">
+
+    <p class="hero-lema">Bajo el Eclipse</p>
+
+    <div class="hero-date-badge">
+      <div class="date-num">12</div>
+      <div class="date-text">
+        <div class="date-month">Agosto</div>
+        <div class="date-year">2026 · Edición especial</div>
+      </div>
+      <div class="divider"></div>
+      <div class="location">
+        <strong>Tabernas, Almería</strong>
+        Desierto de Tabernas · Cielo oscuro certificado
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary">Reservar plaza</a>
+      <a href="#programa" class="btn-secondary">Ver programa</a>
+    </div>
+  </div>
+
+  <div class="horizon">
+    <div class="silhouette-desert">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,200 L0,120 Q50,118 80,115 L100,90 L115,115 Q140,112 170,110 L210,75 L240,110 Q280,108 320,106 L380,85 L400,106 Q440,104 480,102 L520,78 L545,102 Q580,100 620,98 L680,120 L720,95 L760,120 Q800,115 840,112 L870,88 L895,112 Q930,108 970,106 L1020,80 L1050,106 Q1090,104 1130,102 L1170,88 L1200,102 Q1250,98 1300,95 L1340,115 L1380,110 L1440,120 L1440,200 Z" fill="#05070f"/>
+        <rect x="150" y="80" width="8" height="60" fill="#05070f"/>
+        <rect x="145" y="95" width="18" height="5" fill="#05070f"/>
+        <rect x="650" y="70" width="10" height="65" fill="#05070f"/>
+        <rect x="643" y="88" width="22" height="6" fill="#05070f"/>
+        <rect x="1100" y="75" width="9" height="62" fill="#05070f"/>
+        <rect x="1094" y="90" width="20" height="5" fill="#05070f"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Descubre la noche
+  </div>
+</section>
+
+<!-- ECLIPSE / ABOUT -->
+<section id="eclipse">
+  <div class="section-inner">
+    <div class="eclipse-layout">
+      <div class="eclipse-visual reveal">
+        <img src="silueta.jpg" alt="Silueta del desierto de Tabernas bajo el eclipse">
+      </div>
+      <div class="eclipse-text reveal">
+        <p class="section-label">La edición especial</p>
+        <h2 class="section-title">Una noche bajo el eclipse</h2>
+        <p class="section-body">
+          El 12 de agosto de 2026, el primer eclipse solar total visible desde la península Ibérica en más de un siglo se pondrá con el sol sobre el desierto de Tabernas. Después, cuando caiga la noche, las Perseidas alcanzarán su máximo sobre el mismo cielo.
+        </p>
+        <p class="section-body" style="margin-top: 1rem;">
+          Dos fenómenos astronómicos en una sola noche, desde uno de los cielos más oscuros de Europa. No volverá a repetirse algo así en España hasta 2053.
+        </p>
+        <div class="eclipse-facts">
+          <div class="eclipse-fact">
+            <div class="eclipse-fact-icon">🌑</div>
+            <div>
+              <div class="eclipse-fact-title">Eclipse al atardecer</div>
+              <div class="eclipse-fact-body">Observación guiada con gafas certificadas ISO 12312-2. Máximo del eclipse a las 20:32h, justo al ponerse el sol sobre el desierto.</div>
+            </div>
+          </div>
+          <div class="eclipse-fact">
+            <div class="eclipse-fact-icon">✦</div>
+            <div>
+              <div class="eclipse-fact-title">Lluvia de Perseidas</div>
+              <div class="eclipse-fact-body">La noche del 12 al 13 de agosto coincide con el máximo de las Perseidas, la lluvia de estrellas más espectacular del año.</div>
+            </div>
+          </div>
+          <div class="eclipse-fact">
+            <div class="eclipse-fact-icon">🔭</div>
+            <div>
+              <div class="eclipse-fact-title">Cielo Bortle 2</div>
+              <div class="eclipse-fact-body">Tabernas es el desierto más seco de Europa, con más de 300 noches despejadas al año y uno de los cielos más oscuros del continente.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="star-divider">★ ★ ★</div>
+
+<!-- PROGRAMA -->
+<section id="programa">
+  <div class="section-inner">
+    <div class="programa-header reveal">
+      <p class="section-label">12 agosto 2026</p>
+      <h2 class="section-title">El programa de la noche</h2>
+      <p class="section-body">Desde la llegada al atardecer hasta el amanecer en el desierto. Una noche única — minuto a minuto.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-content">
+          <div class="tl-time">18:00 h</div>
+          <div class="tl-title">Bienvenida en el Saloon</div>
+          <div class="tl-desc">Check-in, entrega de gafas certificadas ISO para la observación solar y copa de bienvenida en el poblado western.</div>
+        </div>
+        <div class="tl-dot">🤠</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">🌅</div>
+        <div class="tl-content">
+          <div class="tl-time">19:00 h</div>
+          <div class="tl-title">Cena barbacoa al atardecer</div>
+          <div class="tl-desc">Parrilla al estilo del Oeste con carnes, guarniciones y música en directo para ambientar las primeras horas de la noche.</div>
+        </div>
+      </div>
+      <div class="tl-item highlight">
+        <div class="tl-content">
+          <div class="tl-time">20:15 – 21:00 h</div>
+          <div class="tl-title">★ El Eclipse Solar</div>
+          <div class="tl-desc">Observación guiada por astrónomo. Punto álgido a las 20:32h con el sol eclipsado rozando el horizonte del desierto de Tabernas.</div>
+        </div>
+        <div class="tl-dot">🌑</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">🎭</div>
+        <div class="tl-content">
+          <div class="tl-time">21:30 h</div>
+          <div class="tl-title">Espectáculo nocturno</div>
+          <div class="tl-desc">Show acrobático y ecuestre en la oscuridad del desierto. Fuego, música y magia western bajo el cielo estrellado.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-content">
+          <div class="tl-time">23:00 h</div>
+          <div class="tl-title">Baile country & line dancing</div>
+          <div class="tl-desc">Hoguera, música country en directo y pista de baile. La Noche en el Desierto sigue siendo una fiesta.</div>
+        </div>
+        <div class="tl-dot">💃</div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item highlight">
+        <div class="tl-empty"></div>
+        <div class="tl-dot">✦</div>
+        <div class="tl-content">
+          <div class="tl-time">01:00 – 04:00 h</div>
+          <div class="tl-title">★ Lluvia de Perseidas</div>
+          <div class="tl-desc">Máximo de la lluvia de estrellas más famosa del año. Zona de observación con telescopios y astrónomo a disposición. Exclusivo para quienes pernoctan.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-content">
+          <div class="tl-time">Amanecer</div>
+          <div class="tl-title">Desayuno en el desierto</div>
+          <div class="tl-desc">Café, tortitas y huevos con bacon mientras el sol vuelve sobre el desierto más cinematográfico del mundo.</div>
+        </div>
+        <div class="tl-dot">☀️</div>
+        <div class="tl-empty"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIAS -->
+<section id="experiencias">
+  <div class="section-inner">
+    <div class="exp-header reveal">
+      <p class="section-label">Qué incluye</p>
+      <h2 class="section-title">La experiencia completa</h2>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <div class="feature-title">Cena Barbacoa</div>
+        <div class="feature-desc">Gran barbacoa bajo las estrellas con menú completo: entrantes, carnes a la brasa, guarniciones, postres y bebidas incluidas.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌑</div>
+        <div class="feature-title">Observación del Eclipse</div>
+        <div class="feature-desc">Sesión guiada de astronomía con gafas certificadas ISO 12312-2. El astrónomo te explicará el fenómeno en tiempo real.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✦</div>
+        <div class="feature-title">Lluvia de Perseidas</div>
+        <div class="feature-desc">Noche del máximo de las Perseidas. Observación nocturna con telescopios bajo uno de los cielos más oscuros de Europa.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎭</div>
+        <div class="feature-title">Espectáculo Nocturno</div>
+        <div class="feature-desc">Show acrobático exclusivo con fuego, caballos y música en la oscuridad del parque temático más auténtico del mundo.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤠</div>
+        <div class="feature-title">Talleres & Actividades</div>
+        <div class="feature-desc">Talleres de baile country, lanzamiento de lazo, tiro con arco y actividades del Lejano Oeste al atardecer.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💃</div>
+        <div class="feature-title">Baile Line Dancing</div>
+        <div class="feature-desc">Música country en directo y pista de baile hasta la madrugada. Line dancing, country clásico y mucho más.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="star-divider">★ ★ ★</div>
+
+<!-- ALOJAMIENTO -->
+<section id="alojamiento">
+  <div class="section-inner">
+    <div class="aloj-header reveal">
+      <p class="section-label">Quédate a dormir</p>
+      <h2 class="section-title">Elige tu forma<br>de ver las estrellas</h2>
+      <p class="section-body">Para vivir el eclipse y la lluvia de Perseidas en su máximo esplendor, puedes quedarte a dormir en el parque. Sin volver a casa. Sin perderte nada.</p>
+    </div>
+    <div class="aloj-layout reveal">
+      <div class="aloj-card">
+        <span class="aloj-icon">🛌</span>
+        <div class="aloj-name">Saco de Dormir</div>
+        <div class="aloj-tagline">Bajo las estrellas</div>
+        <p class="aloj-desc">La experiencia más auténtica. Duérmete mirando el cielo, sin techo, rodeado del silencio del desierto de Tabernas.</p>
+        <ul class="aloj-includes">
+          <li>Zona habilitada con esterilla aislante</li>
+          <li>Acceso a duchas y aseos del parque</li>
+          <li>Desayuno incluido al amanecer</li>
+          <li>Trae tu saco de dormir</li>
+          <li>Linterna roja recomendada</li>
+        </ul>
+        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem;">Reservar</a>
+      </div>
+      <div class="aloj-card featured">
+        <div class="aloj-badge">Recomendado</div>
+        <span class="aloj-icon">🚐</span>
+        <div class="aloj-name">Caravana / Autocaravana</div>
+        <div class="aloj-tagline">Confort en el desierto</div>
+        <p class="aloj-desc">Tu casa rodante dentro del parque. Parcela privada con las mejores vistas al cielo nocturno.</p>
+        <ul class="aloj-includes">
+          <li>Parcela privada para autocaravana</li>
+          <li>Toma de electricidad y agua</li>
+          <li>Zona exterior con sillas</li>
+          <li>Acceso a duchas y aseos del parque</li>
+          <li>Desayuno incluido al amanecer</li>
+        </ul>
+        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary" style="font-size:0.72rem; padding: 0.7rem 1.8rem;">Reservar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="Logo_Minihollywood_Oasys_Theme_Park_2025-BLANCO.png" alt="MiniHollywood Oasys Theme Park" class="footer-logo">
+        <p class="footer-tagline">Noche en el Desierto · Bajo el Eclipse · 12 Agosto 2026 · Tabernas, Almería</p>
+      </div>
+      <div class="footer-col">
+        <h4>El evento</h4>
+        <ul>
+          <li><a href="#eclipse">El eclipse</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#experiencias">Experiencias</a></li>
+          <li><a href="#alojamiento">Alojamiento</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reservas</h4>
+        <ul>
+          <li><a href="mailto:taquilla@minihollywoodoasys.com">taquilla@minihollywoodoasys.com</a></li>
+          <li>950 335 335</li>
+          <li>Tabernas, Almería · España</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MiniHollywood Oasys Theme Park · Tabernas, Almería</p>
+      <p><a href="https://minihollywoodoasys.com" target="_blank">minihollywoodoasys.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTÓN VOLVER ARRIBA -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<script>
+// ── STARFIELD ──
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createStars(count) {
+  stars = [];
+  for (let i = 0; i < count; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height * 0.85,
+      r: Math.random() * 1.4 + 0.2,
+      alpha: Math.random() * 0.7 + 0.2,
+      speed: Math.random() * 0.005 + 0.002,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+}
+
+let starOpacity = 0.8;
+function drawStars(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const s of stars) {
+    const a = s.alpha * starOpacity * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,220,255,${a})`;
+    ctx.fill();
+  }
+}
+
+let raf;
+function animate(t) {
+  drawStars(t);
+  raf = requestAnimationFrame(animate);
+}
+
+resizeCanvas();
+createStars(320);
+animate(0);
+window.addEventListener('resize', () => { resizeCanvas(); createStars(320); });
+
+// ── SCROLL EFFECTS ──
+const navbar = document.getElementById('navbar');
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 60;
+  navbar.classList.toggle('scrolled', scrolled);
+  backToTop.classList.toggle('visible', window.scrollY > 500);
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── MOBILE MENU ──
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+burger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  burger.setAttribute('aria-expanded', String(isOpen));
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+mobileLinks.forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+// Cerrar con Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMobileMenu();
+});
+
+// ── SCROLL ANIMATIONS ──
+const revealEls = document.querySelectorAll('.reveal, .tl-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
