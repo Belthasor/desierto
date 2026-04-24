@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="lang-es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +44,10 @@
     overflow-x: hidden;
   }
 
+  /* ── LANGUAGE SYSTEM ── */
+  .lang-es .only-en { display: none; }
+  .lang-en .only-es { display: none; }
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -62,7 +66,6 @@
     flex-shrink: 0;
   }
 
-  /* Botón volver a página anterior */
   .nav-back {
     display: flex;
     align-items: center;
@@ -82,9 +85,7 @@
   .nav-back:hover { color: var(--gold); border-color: rgba(212,144,58,0.35); }
   .nav-back svg { width: 12px; height: 12px; flex-shrink: 0; }
   @media (max-width: 900px) { .nav-back .nav-back-text { display: none; } }
-  @media (max-width: 480px) {
-    .nav-back { padding: 0.3rem 0.5rem; }
-  }
+  @media (max-width: 480px) { .nav-back { padding: 0.3rem 0.5rem; } }
 
   .nav-logo {
     display: block;
@@ -109,6 +110,25 @@
     gap: 0.6rem;
     flex-shrink: 0;
   }
+
+  /* Language toggle */
+  .lang-toggle {
+    background: transparent;
+    border: 1px solid rgba(240,236,228,0.22);
+    color: var(--text-dim);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.38rem 0.7rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .lang-toggle:hover { color: var(--gold); border-color: rgba(212,144,58,0.4); }
 
   .nav-cta {
     background: var(--brand); color: #fff;
@@ -149,11 +169,14 @@
   .nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
-    .nav-links { display: none; }
     .nav-burger { display: flex; }
     .nav-logo img { height: 32px; }
+    .lang-toggle { font-size: 0.58rem; padding: 0.32rem 0.55rem; }
   }
   @media (max-width: 480px) {
     .nav-cta { padding: 0.45rem 0.9rem; font-size: 0.62rem; }
@@ -176,10 +199,7 @@
     transition: opacity 0.3s ease;
     padding-top: var(--nav-h);
   }
-  .mobile-menu.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
   .mobile-menu-nav {
     list-style: none;
     display: flex;
@@ -191,10 +211,7 @@
     border-bottom: 1px solid var(--border);
     margin-bottom: 2.5rem;
   }
-  .mobile-menu-nav li {
-    width: 100%;
-    border-bottom: 1px solid rgba(192,56,40,0.1);
-  }
+  .mobile-menu-nav li { width: 100%; border-bottom: 1px solid rgba(192,56,40,0.1); }
   .mobile-menu-nav li:last-child { border-bottom: none; }
   .mobile-menu-nav a {
     display: block;
@@ -235,10 +252,27 @@
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     overflow: hidden;
-    background: radial-gradient(ellipse 120% 80% at 50% 0%, #1a2d6e 0%, #0c1535 35%, #060a1a 65%, var(--bg) 100%);
+    background: radial-gradient(ellipse at bottom, #262626 0%, #000 100%);
   }
 
-  #starfield { position: absolute; inset: 0; z-index: 0; }
+  /* Stars background layers */
+  .stars-wrap {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    will-change: transform;
+  }
+  .star-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 4000px;
+  }
+  .sdot {
+    position: absolute; top: 0; left: 0; background: transparent; border-radius: 50%;
+  }
+  @keyframes stars-scroll {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-2000px); }
+  }
+  .sl1 { animation: stars-scroll 50s linear infinite; }
+  .sl2 { animation: stars-scroll 100s linear infinite; }
+  .sl3 { animation: stars-scroll 150s linear infinite; }
 
   .shooting-star {
     position: absolute;
@@ -265,7 +299,6 @@
     100% { transform: translate(-260px, 170px) rotate(147deg); opacity: 0; }
   }
 
-  /* Eclipse / Moon — más grande */
   .eclipse-wrap {
     position: absolute; top: -12vw; left: 50%; transform: translateX(-50%);
     width: 88vw; max-width: 1020px;
@@ -273,79 +306,34 @@
     z-index: 1;
     pointer-events: none;
   }
-  @media (max-width: 900px) {
-    .eclipse-wrap { width: 96vw; top: -15vw; }
-  }
-  @media (max-width: 600px) {
-    .eclipse-wrap { width: 100vw; top: -18vw; }
-  }
+  @media (max-width: 900px) { .eclipse-wrap { width: 96vw; top: -15vw; } }
+  @media (max-width: 600px) { .eclipse-wrap { width: 100vw; top: -18vw; } }
 
-  .eclipse-corona {
-    position: absolute; inset: -18%;
-    border-radius: 50%;
-    background: radial-gradient(circle, transparent 38%, rgba(180,80,10,0.18) 48%, rgba(220,120,20,0.12) 58%, rgba(200,100,15,0.05) 70%, transparent 80%);
-    animation: pulseCorona 4s ease-in-out infinite;
-  }
-  .eclipse-corona-2 {
-    position: absolute; inset: -28%;
-    border-radius: 50%;
-    background: radial-gradient(circle, transparent 44%, rgba(150,60,5,0.08) 54%, transparent 70%);
-    animation: pulseCorona 4s ease-in-out infinite 1s;
-  }
   .moon-body {
     position: absolute; inset: 0; border-radius: 50%;
     background: radial-gradient(circle at 38% 35%, #e8e4d8 0%, #ccc8b8 30%, #9a9488 65%, #6a6458 85%, #3a3430 100%);
-    box-shadow: inset -18px -12px 40px rgba(0,0,0,0.6), 0 0 60px rgba(200,160,80,0.15);
+    box-shadow: inset -18px -12px 40px rgba(0,0,0,0.6);
     overflow: hidden;
   }
   .moon-image {
     position: absolute; inset: 0;
     width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    object-fit: contain;
     opacity: 0;
     transition: opacity 0.6s ease;
     pointer-events: none;
   }
   .moon-image.loaded { opacity: 1; }
-  .moon-body.has-image {
-    background: transparent;
-    box-shadow: 0 0 60px rgba(200,160,80,0.15);
-  }
-  .eclipse-shadow {
-    position: absolute; inset: 0; border-radius: 50%;
-    background: radial-gradient(circle at 72% 50%, rgba(20,20,30,0.92) 0%, rgba(10,10,18,0.85) 30%, transparent 60%);
-    mix-blend-mode: multiply;
-    animation: eclipseMove 12s ease-in-out infinite;
-    z-index: 2;
-  }
-  .moon-glow {
-    position: absolute; inset: -8%;
-    border-radius: 50%;
-    box-shadow: 0 0 80px 20px rgba(200,160,80,0.12), 0 0 160px 60px rgba(180,120,50,0.06);
-  }
+  .moon-body.has-image { background: transparent; box-shadow: none; overflow: visible; }
 
-  @keyframes pulseCorona {
-    0%, 100% { opacity: 0.7; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.03); }
-  }
-  @keyframes eclipseMove {
-    0%, 100% { clip-path: circle(50% at 72% 50%); opacity: 0.75; }
-    50% { clip-path: circle(50% at 68% 50%); opacity: 0.85; }
-  }
-
-  /* Horizon silhouette */
   .horizon {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
     height: 32vh;
     background: linear-gradient(to top, #05070f 0%, #05070f 40%, transparent 100%);
   }
-  .silhouette-desert {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 28vh;
-  }
+  .silhouette-desert { position: absolute; bottom: 0; left: 0; right: 0; height: 28vh; }
   .silhouette-desert svg { width: 100%; height: 100%; }
 
-  /* Hero content */
   .hero-content {
     position: relative; z-index: 3;
     text-align: center;
@@ -363,11 +351,8 @@
     height: auto;
     filter: drop-shadow(0 4px 40px rgba(0,0,0,0.8)) drop-shadow(0 0 80px rgba(200,160,80,0.15));
   }
-  @media (max-width: 600px) {
-    .hero-cabecera { width: clamp(240px, 88vw, 480px); }
-  }
+  @media (max-width: 600px) { .hero-cabecera { width: clamp(240px, 88vw, 480px); } }
 
-  /* "Bajo el Eclipse" — sin cursiva */
   .hero-lema {
     font-family: 'Playfair Display', serif;
     font-style: normal;
@@ -387,11 +372,7 @@
     background: rgba(73,16,16,0.15);
     backdrop-filter: blur(8px);
   }
-  .hero-date-badge .date-num {
-    font-size: 2.5rem; font-weight: 800; color: var(--gold);
-    line-height: 1;
-    font-family: 'Playfair Display', serif;
-  }
+  .hero-date-badge .date-num { font-size: 2.5rem; font-weight: 800; color: var(--gold); line-height: 1; font-family: 'Playfair Display', serif; }
   .hero-date-badge .date-text { text-align: left; }
   .hero-date-badge .date-month { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); }
   .hero-date-badge .date-year { font-size: 0.65rem; font-weight: 400; color: var(--text-dim); letter-spacing: 0.15em; }
@@ -405,7 +386,7 @@
     .hero-date-badge .date-text, .hero-date-badge .location { text-align: center; }
   }
 
-  .hero-cta-row { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+  .hero-cta-row { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
   .btn-primary {
     background: var(--brand); color: #fff;
     padding: 0.9rem 2.5rem; border: none; cursor: pointer;
@@ -469,31 +450,14 @@
   .section-body { font-size: 0.95rem; line-height: 1.85; color: var(--text-dim); max-width: 58ch; }
 
   /* ── ABOUT / ECLIPSE SECTION ── */
-  #eclipse {
-    padding: 7rem 0;
-    background: var(--bg);
-  }
+  #eclipse { padding: 7rem 0; background: var(--bg); }
   @media (max-width: 768px) { #eclipse { padding: 4rem 0; } }
   .eclipse-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: stretch; }
   @media (max-width: 900px) { .eclipse-layout { grid-template-columns: 1fr; gap: 3rem; } }
-  .eclipse-visual {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  .eclipse-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-  }
-  @media (max-width: 900px) {
-    .eclipse-visual { height: 360px; }
-  }
-  @media (max-width: 480px) {
-    .eclipse-visual { height: 260px; }
-  }
+  .eclipse-visual { position: relative; overflow: hidden; border: 1px solid var(--border); }
+  .eclipse-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  @media (max-width: 900px) { .eclipse-visual { height: 360px; } }
+  @media (max-width: 480px) { .eclipse-visual { height: 260px; } }
   .eclipse-text .section-body { margin-bottom: 1rem; }
   .eclipse-facts { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
   .eclipse-fact {
@@ -516,9 +480,7 @@
   .programa-header .section-label { justify-content: center; }
   .programa-header .section-label::before { display: none; }
   .programa-header .section-body { margin: 0 auto; }
-  .timeline {
-    position: relative; max-width: 780px; margin: 0 auto;
-  }
+  .timeline { position: relative; max-width: 780px; margin: 0 auto; }
   .timeline::before {
     content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
     background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
@@ -551,10 +513,7 @@
     0%, 100% { box-shadow: 0 0 20px rgba(192,56,40,0.5); }
     50% { box-shadow: 0 0 40px rgba(230,100,60,0.9); }
   }
-  .tl-time {
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--brand); margin-bottom: 0.3rem;
-  }
+  .tl-time { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand); margin-bottom: 0.3rem; }
   .tl-item.highlight .tl-time { color: var(--gold-light); }
   .tl-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; letter-spacing: 0.02em; }
   .tl-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.65; }
@@ -569,6 +528,110 @@
     .tl-item .tl-dot { grid-column: 1; grid-row: 1; }
   }
 
+  /* ── BBQ MENU ── */
+  #bbq {
+    padding: 7rem 0;
+    background: linear-gradient(to bottom, var(--bg) 0%, #0e0505 50%, var(--bg) 100%);
+  }
+  @media (max-width: 768px) { #bbq { padding: 4rem 0; } }
+
+  .bbq-header { text-align: center; margin-bottom: 3.5rem; }
+  .bbq-header .section-label { justify-content: center; }
+  .bbq-header .section-label::before { display: none; }
+  .bbq-header .section-body { margin: 0 auto; }
+
+  .bbq-toggle-wrap { text-align: center; }
+
+  .bbq-toggle-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+  }
+  .bbq-toggle-btn svg { transition: transform 0.3s; }
+  .bbq-toggle-btn.open { border-color: rgba(212,144,58,0.5); color: var(--gold); }
+  .bbq-toggle-btn.open svg { transform: rotate(180deg); }
+
+  .menu-card {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid rgba(192,56,40,0.28);
+    background: linear-gradient(160deg, rgba(16,6,6,0.95) 0%, rgba(22,9,9,0.9) 100%);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.55s ease, opacity 0.4s ease, transform 0.4s ease, margin-top 0.35s ease;
+  }
+  .menu-card.open {
+    max-height: 1600px;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 2.5rem;
+  }
+
+  .menu-card-header {
+    padding: 2rem 2.5rem 1.6rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(212,144,58,0.18);
+    background: rgba(192,56,40,0.07);
+  }
+  .menu-flame {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    filter: drop-shadow(0 0 14px rgba(220,100,20,0.65));
+  }
+  .menu-card-title {
+    font-family: var(--font-western);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    color: var(--gold-light);
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 20px rgba(210,140,50,0.3);
+  }
+
+  .menu-section {
+    padding: 1.6rem 2.5rem;
+    border-bottom: 1px solid rgba(192,56,40,0.1);
+  }
+  .menu-section:last-child { border-bottom: none; }
+
+  @media (max-width: 600px) {
+    .menu-section { padding: 1.3rem 1.4rem; }
+    .menu-card-header { padding: 1.5rem 1.4rem 1.2rem; }
+  }
+
+  .menu-section-title {
+    font-family: var(--font-western);
+    color: var(--brand-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.9rem;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+
+  .menu-items { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .menu-items li {
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text);
+    padding: 0.12rem 0;
+  }
+  .menu-items li + li {
+    border-top: 1px solid rgba(255,255,255,0.04);
+    padding-top: 0.4rem;
+  }
+
+  .menu-drinks-note {
+    text-align: center;
+    font-size: 0.67rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
   /* ── ALOJAMIENTO ── */
   #alojamiento {
     padding: 7rem 0;
@@ -576,20 +639,28 @@
   }
   @media (max-width: 768px) { #alojamiento { padding: 4rem 0; } }
   .aloj-header { margin-bottom: 3rem; }
-  .aloj-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3.5rem; background: rgba(192,56,40,0.2); }
-  @media (max-width: 900px) { .aloj-layout { grid-template-columns: 1fr; } }
+  .aloj-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 3.5rem; background: transparent; }
+  @media (max-width: 1050px) { .aloj-layout { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 680px) { .aloj-layout { grid-template-columns: 1fr; } }
   .aloj-card {
-    background: var(--sky1);
-    padding: 3rem 2.5rem;
-    position: relative; overflow: hidden;
+    background: var(--sky1); padding: 3rem 2.5rem; position: relative; overflow: hidden;
+    will-change: transform;
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+    display: flex; flex-direction: column;
   }
+  .aloj-card .aloj-includes { flex: 1; }
   @media (max-width: 480px) { .aloj-card { padding: 2rem 1.5rem; } }
-  .aloj-card.featured { background: #180c0c; }
-  .aloj-badge {
-    position: absolute; top: 1.5rem; right: 1.5rem;
-    font-size: 0.58rem; font-weight: 800; letter-spacing: 0.25em;
-    text-transform: uppercase; color: #fff;
-    background: var(--brand); padding: 0.3rem 0.7rem;
+
+  /* Tilt spotlight overlay */
+  .tilt-spotlight {
+    pointer-events: none; position: absolute; inset: 0; z-index: 10;
+    overflow: hidden; opacity: 0; transition: opacity 0.3s;
+  }
+  .tilt-spot-inner {
+    position: absolute; width: 200%; height: 200%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.13) 0%, transparent 40%);
+    transform: translate(-50%, -50%);
   }
   .aloj-name { font-family: var(--font-western); font-weight: 700; font-size: 1.7rem; margin-bottom: 0.5rem; color: var(--text); letter-spacing: 0.02em; }
   .aloj-tagline { font-size: 0.78rem; color: var(--brand-light); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
@@ -599,22 +670,12 @@
   .aloj-includes li::before { content: '—'; color: var(--brand); flex-shrink: 0; }
 
   /* ── DIVIDER STARS ── */
-  .star-divider {
-    text-align: center; padding: 2rem 0;
-    color: var(--brand-dark); font-size: 0.6rem; letter-spacing: 1.5rem;
-  }
+  .star-divider { text-align: center; padding: 2rem 0; color: var(--brand-dark); font-size: 0.6rem; letter-spacing: 1.5rem; }
 
   /* ── FOOTER ── */
-  footer {
-    padding: 4rem 2rem 2rem;
-    background: #03040a;
-    border-top: 1px solid var(--border);
-  }
+  footer { padding: 4rem 2rem 2rem; background: #03040a; border-top: 1px solid var(--border); }
   .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem;
-  }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 3rem; flex-wrap: wrap; margin-bottom: 3rem; }
   .footer-logo { height: 52px; width: auto; display: block; margin-bottom: 1rem; }
   .footer-tagline { font-size: 0.78rem; color: var(--text-dim); max-width: 30ch; line-height: 1.7; }
   .footer-col h4 { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--brand-light); margin-bottom: 1rem; }
@@ -622,42 +683,25 @@
   .footer-col ul li { font-size: 0.8rem; color: var(--text-dim); }
   .footer-col ul li a { color: inherit; text-decoration: none; transition: color 0.2s; }
   .footer-col ul li a:hover { color: var(--text); }
-  .footer-bottom {
-    border-top: 1px solid var(--border); padding-top: 1.5rem;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-  }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .footer-bottom p { font-size: 0.7rem; color: var(--text-dim); }
   .footer-bottom a { color: var(--brand-light); text-decoration: none; }
 
   /* ── BACK TO TOP ── */
   .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 300;
-    width: 44px;
-    height: 44px;
-    background: var(--brand);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(12px);
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
+    width: 44px; height: 44px;
+    background: var(--brand); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(12px);
     transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(192,56,40,0.4);
   }
-  .back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .back-to-top.visible { opacity: 1; transform: translateY(0); }
   .back-to-top:hover { background: var(--brand-light); }
   .back-to-top svg { width: 18px; height: 18px; color: #fff; }
-  @media (max-width: 768px) {
-    .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; }
-  }
+  @media (max-width: 768px) { .back-to-top { bottom: 1.2rem; right: 1.2rem; width: 40px; height: 40px; } }
 
   /* ── SCROLL ANIMATIONS ── */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
@@ -669,21 +713,30 @@
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-left">
-    <a href="https://minihollywoodoasys.com/fechas-especiales/" class="nav-back" aria-label="Volver a Fechas Especiales">
+    <a href="https://minihollywoodoasys.com/fechas-especiales/" class="nav-back" aria-label="Volver">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      <span class="nav-back-text">Fechas especiales</span>
+      <span class="nav-back-text only-es">Fechas especiales</span>
+      <span class="nav-back-text only-en">Special dates</span>
     </a>
     <a href="#hero" class="nav-logo" aria-label="MiniHollywood Oasys Theme Park">
       <img src="Logo_Minihollywood_Oasys_Theme_Park_2025-BLANCO.png" alt="MiniHollywood Oasys Theme Park">
     </a>
   </div>
   <ul class="nav-links">
-    <li><a href="#eclipse">El eclipse</a></li>
-    <li><a href="#programa">Programa</a></li>
-    <li><a href="#alojamiento">Alojamiento</a></li>
+    <li><a href="#eclipse"><span class="only-es">El eclipse</span><span class="only-en">The eclipse</span></a></li>
+    <li><a href="#programa"><span class="only-es">Programa</span><span class="only-en">Programme</span></a></li>
+    <li><a href="#bbq"><span class="only-es">Menú BBQ</span><span class="only-en">BBQ Menu</span></a></li>
+    <li><a href="#alojamiento"><span class="only-es">Tu Noche</span><span class="only-en">Your Night</span></a></li>
   </ul>
   <div class="nav-right">
-    <a href="https://minihollywoodoasys.com" target="_blank" class="nav-cta">Reservar</a>
+    <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma / Switch language">
+      <span class="only-es">EN</span>
+      <span class="only-en">ES</span>
+    </button>
+    <a href="https://minihollywoodoasys.com" target="_blank" class="nav-cta">
+      <span class="only-es">Reservar</span>
+      <span class="only-en">Book</span>
+    </a>
     <button class="nav-burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -693,58 +746,78 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación">
   <ul class="mobile-menu-nav">
-    <li><a href="#eclipse" class="mobile-link">El eclipse</a></li>
-    <li><a href="#programa" class="mobile-link">Programa</a></li>
-    <li><a href="#alojamiento" class="mobile-link">Alojamiento</a></li>
+    <li><a href="#eclipse" class="mobile-link"><span class="only-es">El eclipse</span><span class="only-en">The eclipse</span></a></li>
+    <li><a href="#programa" class="mobile-link"><span class="only-es">Programa</span><span class="only-en">Programme</span></a></li>
+    <li><a href="#bbq" class="mobile-link"><span class="only-es">Menú BBQ</span><span class="only-en">BBQ Menu</span></a></li>
+    <li><a href="#alojamiento" class="mobile-link"><span class="only-es">Tu Noche</span><span class="only-en">Your Night</span></a></li>
   </ul>
   <div class="mobile-menu-footer">
-    <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary mobile-link" style="font-size:0.75rem;">Reservar plaza</a>
+    <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary mobile-link" style="font-size:0.75rem;">
+      <span class="only-es">Reservar plaza</span>
+      <span class="only-en">Book your place</span>
+    </a>
     <a href="https://minihollywoodoasys.com/fechas-especiales/" class="mobile-back-link">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Volver a Fechas Especiales
+      <span class="only-es">Volver a Fechas Especiales</span>
+      <span class="only-en">Back to Special Dates</span>
     </a>
   </div>
 </div>
 
 <!-- HERO -->
 <section id="hero">
-  <canvas id="starfield"></canvas>
-
+  <div class="stars-wrap" id="starsWrap">
+    <div class="star-layer sl1">
+      <div class="sdot" id="sd1a" style="width:1px;height:1px"></div>
+      <div class="sdot" id="sd1b" style="width:1px;height:1px;top:2000px"></div>
+    </div>
+    <div class="star-layer sl2">
+      <div class="sdot" id="sd2a" style="width:2px;height:2px"></div>
+      <div class="sdot" id="sd2b" style="width:2px;height:2px;top:2000px"></div>
+    </div>
+    <div class="star-layer sl3">
+      <div class="sdot" id="sd3a" style="width:3px;height:3px"></div>
+      <div class="sdot" id="sd3b" style="width:3px;height:3px;top:2000px"></div>
+    </div>
+  </div>
   <div class="shooting-star s1"></div>
   <div class="shooting-star s2"></div>
   <div class="shooting-star s3"></div>
 
   <div class="eclipse-wrap">
-    <div class="eclipse-corona-2"></div>
-    <div class="eclipse-corona"></div>
-    <div class="moon-glow"></div>
     <div class="moon-body" id="moonBody">
       <img src="luna.png" alt="" class="moon-image" id="moonImage" onload="this.classList.add('loaded'); document.getElementById('moonBody').classList.add('has-image');" onerror="this.style.display='none';">
-      <div class="eclipse-shadow"></div>
+
     </div>
   </div>
 
   <div class="hero-content">
     <img src="Cabecera_2026.png" alt="Noche en el Desierto" class="hero-cabecera">
 
-    <p class="hero-lema">Bajo el Eclipse</p>
+    <p class="hero-lema">
+      <span class="only-es">Eclipse solar y Perseidas en una noche única</span>
+      <span class="only-en">Solar eclipse and Perseids on a unique night</span>
+    </p>
 
     <div class="hero-date-badge">
       <div class="date-num">12</div>
       <div class="date-text">
-        <div class="date-month">Agosto</div>
-        <div class="date-year">2026 · Edición especial</div>
+        <div class="date-month"><span class="only-es">Agosto</span><span class="only-en">August</span></div>
+        <div class="date-year"><span class="only-es">2026 · Edición especial</span><span class="only-en">2026 · Special edition</span></div>
       </div>
       <div class="divider"></div>
       <div class="location">
-        <strong>Tabernas, Almería</strong>
-        Desierto de Tabernas · Cielo oscuro certificado
+        <strong>Minihollywood Oasys</strong>
+        <span class="only-es">Desierto de Tabernas, Almería</span>
+        <span class="only-en">Tabernas Desert, Almería</span>
       </div>
     </div>
 
     <div class="hero-cta-row">
-      <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary">Reservar plaza</a>
-      <a href="#programa" class="btn-secondary">Ver programa</a>
+      <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary">
+        <span class="only-es">Reservar plaza</span>
+        <span class="only-en">Book your place</span>
+      </a>
     </div>
   </div>
 
@@ -762,10 +835,7 @@
     </div>
   </div>
 
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    Descubre la noche
-  </div>
+ 
 </section>
 
 <!-- ECLIPSE / ABOUT -->
@@ -776,34 +846,70 @@
         <img src="silueta.jpg" alt="Silueta del desierto de Tabernas bajo el eclipse">
       </div>
       <div class="eclipse-text reveal">
-        <p class="section-label">La edición especial</p>
-        <h2 class="section-title">Una noche bajo el eclipse</h2>
-        <p class="section-body">
-          El 12 de agosto de 2026, el primer eclipse solar total visible desde la península Ibérica en más de un siglo se pondrá con el sol sobre el desierto de Tabernas. Después, cuando caiga la noche, las Perseidas alcanzarán su máximo sobre el mismo cielo.
+        <p class="section-label">
+          <span class="only-es">Una edición muy especial</span>
+          <span class="only-en">A very special edition</span>
         </p>
-        <p class="section-body" style="margin-top: 1rem;">
-          Dos fenómenos astronómicos en una sola noche, desde uno de los cielos más oscuros de Europa. No volverá a repetirse algo así en España hasta 2053.
+        <h2 class="section-title">
+          <span class="only-es">Noche de eclipse y estrellas</span>
+          <span class="only-en">Night of eclipse and stars</span>
+        </h2>
+        <p class="section-body only-es">
+          El 12 de agosto de 2026, uno de los eclipses solares más impactantes del último siglo, será visible desde España. En el desierto de Tabernas, se vivirá como un eclipse parcial muy avanzado, justo al atardecer, cuando el sol se oculte sobre el horizonte.
         </p>
+        <p class="section-body only-en">
+          On 12 August 2026, one of the most striking solar eclipses of the last century will be visible from Spain. In the Tabernas Desert, it will be experienced as a very advanced partial eclipse, just at sunset, as the Sun disappears below the horizon.
+        </p>
+        <p class="section-body only-es" style="margin-top: 1rem;">
+          Después, cuando caiga la noche, las Perseidas alcanzarán su pico o estarán muy cerca de su máximo, dejando paso a una de las lluvias de estrellas más espectaculares del año.
+        </p>
+        <p class="section-body only-en" style="margin-top: 1rem;">
+          Later, as night falls, the Perseids will reach their peak or be very close to their maximum, giving way to one of the most spectacular meteor showers of the year.
+        </p>
+        <p class="section-body only-es" style="margin-top: 1rem;">
+          Dos fenómenos astronómicos en una misma jornada, desde uno de los cielos más limpios y oscuros de Europa.
+        </p>
+        <p class="section-body only-en" style="margin-top: 1rem;">
+          Two astronomical phenomena on the same day, under one of Europe's clearest and darkest skies.
+        </p>        
         <div class="eclipse-facts">
           <div class="eclipse-fact">
             <div class="eclipse-fact-icon">🌑</div>
             <div>
-              <div class="eclipse-fact-title">Eclipse al atardecer</div>
-              <div class="eclipse-fact-body">Observación guiada con gafas certificadas ISO 12312-2. Máximo del eclipse a las 20:32h, justo al ponerse el sol sobre el desierto.</div>
+              <div class="eclipse-fact-title">
+                <span class="only-es">Eclipse al atardecer</span>
+                <span class="only-en">Eclipse at sunset</span>
+              </div>
+              <div class="eclipse-fact-body">
+                <span class="only-es">Observación con gafas certificadas ISO 12312-2. El eclipse alcanzará su punto máximo al atardecer, muy cerca de la puesta de sol sobre el desierto.</span>
+                <span class="only-en">Observation with glasses certified to ISO 12312-2. The eclipse will reach its peak at sunset, very close to the moment when the sun sets over the desert.</span>
+              </div>
             </div>
           </div>
           <div class="eclipse-fact">
             <div class="eclipse-fact-icon">✦</div>
             <div>
-              <div class="eclipse-fact-title">Lluvia de Perseidas</div>
-              <div class="eclipse-fact-body">La noche del 12 al 13 de agosto coincide con el máximo de las Perseidas, la lluvia de estrellas más espectacular del año.</div>
+              <div class="eclipse-fact-title">
+                <span class="only-es">Lluvia de Perseidas</span>
+                <span class="only-en">Perseid Meteor Shower</span>
+              </div>
+              <div class="eclipse-fact-body">
+                <span class="only-es">La noche del 12 al 13 de agosto coincide con uno de los momentos de mayor intensidad de las Perseidas.</span>
+                <span class="only-en">The night of 12 to 13 August coincides with one of the most intense moments of the Perseids.</span>
+              </div>
             </div>
           </div>
           <div class="eclipse-fact">
             <div class="eclipse-fact-icon">🔭</div>
             <div>
-              <div class="eclipse-fact-title">Cielo Bortle 2</div>
-              <div class="eclipse-fact-body">Tabernas es el desierto más seco de Europa, con más de 300 noches despejadas al año y uno de los cielos más oscuros del continente.</div>
+              <div class="eclipse-fact-title">
+                <span class="only-es">Cielos privilegiados para la observación</span>
+                <span class="only-en">Privileged skies for observation</span>
+              </div>
+              <div class="eclipse-fact-body">
+                <span class="only-es">El desierto de Tabernas cuenta con más de 300 noches despejadas al año y unas condiciones ideales para observar el cielo nocturno, con muy baja contaminación lumínica.</span>
+                <span class="only-en">The Tabernas Desert enjoys more than 300 clear nights a year and offers ideal conditions for observing the night sky, with very low light pollution.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -812,22 +918,31 @@
   </div>
 </section>
 
-<div class="star-divider">★ ★ ★</div>
 
 <!-- PROGRAMA -->
 <section id="programa">
   <div class="section-inner">
     <div class="programa-header reveal">
-      <p class="section-label">12 agosto 2026</p>
-      <h2 class="section-title">El programa de la noche</h2>
-      <p class="section-body">Desde la llegada al atardecer hasta el amanecer en el desierto. Una noche única — minuto a minuto.</p>
+      <p class="section-label">
+        <span class="only-es">12 agosto 2026</span>
+        <span class="only-en">12 August 2026</span>
+      </p>
+      <h2 class="section-title">
+        <span class="only-es">Vive el fenómeno minuto a minuto</span>
+        <span class="only-en">Experience the phenomenon minute by minute</span>
+      </h2>
+      <p class="section-body only-es">Desde el eclipse al atardecer hasta las Perseidas al amanecer.</p>
+      <p class="section-body only-en">From the eclipse at sunset to the Perseids at dawn.</p>
     </div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-content">
           <div class="tl-time">17:30 – 20:00 h</div>
-          <div class="tl-title">Visita el Parque</div>
-          <div class="tl-desc">Explora el escenario natural más cinematográfico del mundo antes de que caiga la noche. Calles del Oeste, decorados históricos y el desierto como telón de fondo.</div>
+          <div class="tl-title"><span class="only-es">Visita el Parque</span><span class="only-en">Explore the Park</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Explora el escenario natural más cinematográfico del mundo antes de que caiga la noche. Calles del Oeste, decorados históricos y el desierto como telón de fondo.</span>
+            <span class="only-en">Explore the world's most cinematic natural setting before nightfall. Wild West streets, historic sets and the desert as a backdrop.</span>
+          </div>
         </div>
         <div class="tl-dot">🌵</div>
         <div class="tl-empty"></div>
@@ -837,15 +952,21 @@
         <div class="tl-dot">👨‍👩‍👧</div>
         <div class="tl-content">
           <div class="tl-time">18:00 – 20:00 h</div>
-          <div class="tl-title">Talleres en Familia</div>
-          <div class="tl-desc">Actividades para los más pequeños: lanzamiento de lazo, tiro con arco y los secretos del Lejano Oeste al atardecer.</div>
+          <div class="tl-title"><span class="only-es">Talleres en Familia</span><span class="only-en">Family Workshops</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Actividades para los más pequeños: lanzamiento de lazo, tiro con arco y los secretos del Lejano Oeste al atardecer.</span>
+            <span class="only-en">Activities for the little ones: lasso throwing, archery, and the secrets of the Far West at sunset.</span>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-content">
           <div class="tl-time">18:00 h</div>
-          <div class="tl-title">Encuentro con Aves</div>
-          <div class="tl-desc">Demostración de cetrería y exhibición de rapaces. Una experiencia única bajo el cielo abierto del desierto de Tabernas.</div>
+          <div class="tl-title"><span class="only-es">Encuentro con Aves</span><span class="only-en">Birds of Prey Show</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Demostración de cetrería y exhibición de rapaces. Una experiencia única bajo el cielo abierto del desierto de Tabernas.</span>
+            <span class="only-en">Falconry demonstration and birds of prey display. A unique experience under the open sky of the Tabernas Desert.</span>
+          </div>
         </div>
         <div class="tl-dot">🦅</div>
         <div class="tl-empty"></div>
@@ -855,15 +976,21 @@
         <div class="tl-dot">💃</div>
         <div class="tl-content">
           <div class="tl-time">19:00 h</div>
-          <div class="tl-title">Espectáculo Cancán en el Saloon</div>
-          <div class="tl-desc">Las bailarinas del Saloon llenan la noche de color, ritmo y el auténtico espíritu del Lejano Oeste.</div>
+          <div class="tl-title"><span class="only-es">Espectáculo Cancán en el Saloon</span><span class="only-en">Can-Can Show at the Saloon</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Las bailarinas del Saloon llenan la noche de color, ritmo y el auténtico espíritu del Lejano Oeste.</span>
+            <span class="only-en">The Saloon dancers fill the night with colour, rhythm and the authentic spirit of the Far West.</span>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-content">
           <div class="tl-time">20:00 h</div>
-          <div class="tl-title">Espectáculo Western</div>
-          <div class="tl-desc">Acrobacias ecuestres, pistoleros y el show más auténtico del Oeste. El espectáculo que convirtió este parque en leyenda.</div>
+          <div class="tl-title"><span class="only-es">Espectáculo Western</span><span class="only-en">Western Show</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Acrobacias ecuestres, pistoleros y el show más auténtico del Oeste. El espectáculo que convirtió este parque en leyenda.</span>
+            <span class="only-en">Equestrian stunts, gunslingers and the most authentic Western show. The spectacle that made this park legendary.</span>
+          </div>
         </div>
         <div class="tl-dot">🤠</div>
         <div class="tl-empty"></div>
@@ -872,16 +999,22 @@
         <div class="tl-empty"></div>
         <div class="tl-dot">🌑</div>
         <div class="tl-content">
-          <div class="tl-time">20:15 – 21:00 h</div>
-          <div class="tl-title">★ El Eclipse Solar</div>
-          <div class="tl-desc">Observación guiada por astrónomo. Punto álgido a las 20:32h con el sol eclipsado rozando el horizonte del desierto de Tabernas.</div>
+          <div class="tl-time">19:37 - 21:00 h</div>
+          <div class="tl-title"><span class="only-es">★ Eclipse solar al atardecer</span><span class="only-en">★ Solar eclipse at sunset</span></div>
+          <div class="tl-desc">
+            <span class="only-es">El fenómeno empezará a las 19:37 h alcanzando su punto máximo a las 20:32 h con el sol parcialmente eclipsado muy cerca del horizonte del desierto de Tabernas.</span>
+            <span class="only-en">The phenomenon will begin at 19:37, reach its peak at 20:32 and reveal the partially eclipsed Sun very close to the horizon of the Tabernas Desert.</span>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-content">
           <div class="tl-time">21:00 h</div>
-          <div class="tl-title">Cena Barbacoa</div>
-          <div class="tl-desc">Gran parrilla bajo las estrellas con menú completo: carnes, guarniciones y postres. Amenizada con música country en directo.</div>
+          <div class="tl-title"><span class="only-es">Cena Barbacoa</span><span class="only-en">BBQ Dinner</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Gran parrilla bajo las estrellas con menú completo: carnes, guarniciones y postres. Amenizada con música country en directo.</span>
+            <span class="only-en">Grand grill under the stars with full menu: meats, sides and desserts. Accompanied by live country music.</span>
+          </div>
         </div>
         <div class="tl-dot">🔥</div>
         <div class="tl-empty"></div>
@@ -891,15 +1024,21 @@
         <div class="tl-dot">✦</div>
         <div class="tl-content">
           <div class="tl-time">01:00 – 04:00 h</div>
-          <div class="tl-title">★ Lluvia de Perseidas</div>
-          <div class="tl-desc">Máximo de la lluvia de estrellas más famosa del año. Zona de observación con telescopios y astrónomo a disposición. Exclusivo para quienes pernoctan.</div>
+          <div class="tl-title"><span class="only-es">★ Lluvia de Perseidas</span><span class="only-en">★ Perseid Meteor Shower</span></div>
+          <div class="tl-desc">
+            <span class="only-es">En su pico o muy cerca del máximo. El mejor momento de observación será durante la madrugada.</span>
+            <span class="only-en">At their peak or very close to their maximum. The best time for observation will be during the early hours of the morning.</span>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-content">
-          <div class="tl-time">Amanecer</div>
-          <div class="tl-title">Desayuno en el desierto</div>
-          <div class="tl-desc">Café, tortitas y huevos con bacon mientras el sol vuelve sobre el desierto más cinematográfico del mundo.</div>
+          <div class="tl-time"><span class="only-es">Amanecer</span><span class="only-en">Dawn</span></div>
+          <div class="tl-title"><span class="only-es">Desayuno en el desierto</span><span class="only-en">Desert Breakfast</span></div>
+          <div class="tl-desc">
+            <span class="only-es">Desayuno Buffet mientras el Sol vuelve sobre el desierto más cinematográfico del mundo (desayuno con suplemento). Después, el parque es tuyo todo el día.</span>
+            <span class="only-en">uffet breakfast as the Sun rises again over the most cinematic desert in the world (breakfast available at a supplement). Afterwards, the park is yours to enjoy all day.</span>
+          </div>
         </div>
         <div class="tl-dot">☀️</div>
         <div class="tl-empty"></div>
@@ -908,42 +1047,230 @@
   </div>
 </section>
 
+<div class="star-divider">★ ★ ★</div>
+
+<!-- MENÚ BBQ -->
+<section id="bbq">
+  <div class="section-inner">
+    <div class="bbq-header reveal">
+      <p class="section-label">
+        <span class="only-es">La cena</span>
+        <span class="only-en">The dinner</span>
+      </p>
+      <h2 class="section-title">
+        <span class="only-es">Menú Barbacoa</span>
+        <span class="only-en">BBQ Menu</span>
+      </h2>
+      <p class="section-body only-es">Una parrilla bajo las estrellas del desierto. Carnes a la brasa, guarniciones y el capricho del Sheriff — con bebida incluida hasta el postre.</p>
+      <p class="section-body only-en">A grill under the desert stars. Flame-cooked meats, sides and the Sheriff's treat — with drinks included until dessert.</p>
+    </div>
+
+    <div class="bbq-toggle-wrap reveal">
+      <button class="btn-secondary bbq-toggle-btn" id="bbqToggle" onclick="toggleBBQMenu()">
+        <span class="only-es">Ver menú BBQ</span>
+        <span class="only-en">See BBQ menu</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="menu-card" id="menuCard">
+      <div class="menu-card-header">
+        <span class="menu-flame"></span>
+        <div class="menu-card-title">
+          <span class="only-es">MENÚ BBQ</span>
+          <span class="only-en">BBQ MENU</span>
+        </div>
+      </div>
+
+      <!-- Entrante -->
+      <div class="menu-section">
+        <div class="menu-section-title">
+          <span class="only-es">Primer bocado bajo la luna…</span>
+          <span class="only-en">First bite under the moonlight…</span>
+        </div>
+        <ul class="menu-items">
+          <li>
+            <span class="only-es">Ensalada campera individual</span>
+            <span class="only-en">Individual country-style salad</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Carnes -->
+      <div class="menu-section">
+        <div class="menu-section-title">
+          <span class="only-es">Auténtico sabor Far West…</span>
+          <span class="only-en">Authentic Far West flavour…</span>
+        </div>
+        <ul class="menu-items">
+          <li>
+            <span class="only-es">Chorizo criollo al estilo argentino</span>
+            <span class="only-en">Argentinian-style criollo chorizo</span>
+          </li>
+          <li>
+            <span class="only-es">Costilla de cerdo asada a baja temperatura</span>
+            <span class="only-en">Slow-cooked pork ribs</span>
+          </li>
+          <li>
+            <span class="only-es">Contramuslo de pollo deshuesado y marinado</span>
+            <span class="only-en">Marinated boneless chicken thigh</span>
+          </li>
+          <li>
+            <span class="only-es">Lagarto ibérico braseado</span>
+            <span class="only-en">Grilled Ibérico pork "Lagarto"</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Guarniciones -->
+      <div class="menu-section">
+        <div class="menu-section-title">
+          <span class="only-es">Compañeros de parrilla…</span>
+          <span class="only-en">Grill companions…</span>
+        </div>
+        <ul class="menu-items">
+          <li>
+            <span class="only-es">Mazorca de maíz con mantequillas fusionadas</span>
+            <span class="only-en">Corn on the cob with flavoured butters</span>
+          </li>
+          <li>
+            <span class="only-es">Patata asada con hierbas aromáticas de romero y ajo</span>
+            <span class="only-en">Baked potato with rosemary and garlic</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Postre -->
+      <div class="menu-section">
+        <div class="menu-section-title">
+          <span class="only-es">Capricho del Sheriff…</span>
+          <span class="only-en">The Sheriff's treat…</span>
+        </div>
+        <ul class="menu-items">
+          <li>
+            <span class="only-es">Brownie de chocolate templado y helado de vainilla</span>
+            <span class="only-en">Warm chocolate brownie with vanilla ice cream</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bebidas -->
+      <div class="menu-section">
+        <div class="menu-section-title">
+          <span class="only-es">Para los vaqueros sedientos…</span>
+          <span class="only-en">For thirsty cowboys…</span>
+        </div>
+        <ul class="menu-items">
+          <li>
+            <span class="only-es">Agua, cerveza, tinto de verano y refrescos</span>
+            <span class="only-en">Water, beer, tinto de verano and soft drinks</span>
+          </li>
+        </ul>
+        <p class="menu-drinks-note">
+          <span class="only-es">Bebida incluida hasta servir el postre</span>
+          <span class="only-en">Drinks included until dessert is served</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="star-divider">★ ★ ★</div>
+
 <!-- ALOJAMIENTO -->
 <section id="alojamiento">
   <div class="section-inner">
     <div class="aloj-header reveal">
-      <p class="section-label">Quédate a dormir</p>
-      <h2 class="section-title">Elige tu forma<br>de ver las estrellas</h2>
-      <p class="section-body">Para vivir el eclipse y la lluvia de Perseidas en su máximo esplendor, puedes quedarte a dormir en el parque. Sin volver a casa. Sin perderte nada.</p>
+      <p class="section-label">
+        <span class="only-es">La experiencia</span>
+        <span class="only-en">The experience</span>
+      </p>
+      <h2 class="section-title">
+        <span class="only-es">Elige tu forma<br>de vivir la noche</span>
+        <span class="only-en">Choose how you<br>live the night</span>
+      </h2>
+      <p class="section-body only-es">Desde la cena bajo las estrellas hasta amanecer en el desierto. Elige la experiencia que mejor se adapta a ti.</p>
+      <p class="section-body only-en">From dinner under the stars to waking up in the desert. Choose the experience that suits you best.</p>
     </div>
     <div class="aloj-layout reveal">
+
+      <!-- Opción 1: Solo la cena -->
       <div class="aloj-card">
-        <div class="aloj-name">Saco de Dormir</div>
-        <div class="aloj-tagline">Bajo las estrellas</div>
-        <p class="aloj-desc">La experiencia más auténtica. Duérmete mirando el cielo, sin techo, rodeado del silencio del desierto de Tabernas.</p>
+        <div class="aloj-name">
+          <span class="only-es">Solo la Cena</span>
+          <span class="only-en">Dinner Only</span>
+        </div>
+        <div class="aloj-tagline">
+          <span class="only-es">Sin pernocta</span>
+          <span class="only-en">No overnight stay</span>
+        </div>
+        <p class="aloj-desc only-es">Disfruta de la cena BBQ, el eclipse y los espectáculos en una noche única, sin necesidad de pernoctar. La opción ideal si prefieres vivir la experiencia y regresar a casa esa misma noche.</p>
+        <p class="aloj-desc only-en">Enjoy a barbecue dinner, the eclipse and the shows on a unique night, with no need to stay overnight. The ideal option if you prefer to enjoy the experience and return home that same evening.</p>
         <ul class="aloj-includes">
-          <li>Zona habilitada con esterilla aislante</li>
-          <li>Acceso a duchas y aseos del parque</li>
-          <li>Desayuno incluido al amanecer</li>
-          <li>Trae tu saco de dormir</li>
-          <li>Linterna roja recomendada</li>
+          <li><span class="only-es">Cena BBQ con menú completo</span><span class="only-en">Full BBQ dinner menu</span></li>
+          <li><span class="only-es">Eclipse solar y espectáculos del programa</span><span class="only-en">Solar eclipse and programme shows</span></li>
+          <li><span class="only-es">Sin pernocta — salida libre a discreción</span><span class="only-en">No overnight stay — depart at your leisure</span></li>
         </ul>
-        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem;">Reservar</a>
+        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+          <span class="only-es">Reservar</span>
+          <span class="only-en">Book</span>
+        </a>
       </div>
-      <div class="aloj-card featured">
-        <div class="aloj-badge">Recomendado</div>
-        <div class="aloj-name">Caravana / Autocaravana</div>
-        <div class="aloj-tagline">Confort en el desierto</div>
-        <p class="aloj-desc">Tu casa rodante dentro del parque. Parcela privada con las mejores vistas al cielo nocturno.</p>
+
+      <!-- Opción 2: Tienda de campaña -->
+      <div class="aloj-card">
+        <div class="aloj-name">
+          <span class="only-es">Tienda de Campaña</span>
+          <span class="only-en">Tent</span>
+        </div>
+        <div class="aloj-tagline">
+          <span class="only-es">Bajo las estrellas</span>
+          <span class="only-en">Under the stars</span>
+        </div>
+        <p class="aloj-desc only-es">La experiencia más auténtica. Duérmete mirando el cielo, rodeado del silencio del desierto de Tabernas.</p>
+        <p class="aloj-desc only-en">The most authentic experience. Fall asleep gazing at the sky, surrounded by the silence of the Tabernas Desert.</p>
         <ul class="aloj-includes">
-          <li>Parcela privada para autocaravana</li>
-          <li>Toma de electricidad y agua</li>
-          <li>Zona exterior con sillas</li>
-          <li>Acceso a duchas y aseos del parque</li>
-          <li>Desayuno incluido al amanecer</li>
+          <li><span class="only-es">Zona habilitada para tiendas de campaña</span><span class="only-en">Designated tent area</span></li>
+          <li><span class="only-es">Acceso a los aseos del parque</span><span class="only-en">Access to the park toilets</span></li>
+          <li><span class="only-es">Seguridad privada durante toda la noche</span><span class="only-en">Private security throughout the night</span></li>
+          <li><span class="only-es">Desayuno al amanecer en el desierto, opcional y con suplemento</span><span class="only-en">Breakfast at sunrise in the desert, optional and available at a supplement</span></li>
+          <li><span class="only-es">Recogida de la tienda antes de las 10:00 h</span><span class="only-en">Tent collection before 10:00</span></li>
+          <li><span class="only-es">Tras el desayuno, disfruta del parque durante todo el día</span><span class="only-en">After breakfast, enjoy the park all day</span></li>
+          <li><span class="only-es">Es necesario traer tu propia tienda de campaña</span><span class="only-en">Guests must bring their own tent</span></li>
         </ul>
-        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary" style="font-size:0.72rem; padding: 0.7rem 1.8rem;">Reservar</a>
+        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+          <span class="only-es">Reservar</span>
+          <span class="only-en">Book</span>
+        </a>
       </div>
+
+      <!-- Opción 3: Caravana / Autocaravana -->
+      <div class="aloj-card">
+        <div class="aloj-name">
+          <span class="only-es">Autocaravana</span>
+          <span class="only-en">Motorhome</span>
+        </div>
+        <div class="aloj-tagline">
+          <span class="only-es">Confort en el desierto</span>
+          <span class="only-en">Desert comfort</span>
+        </div>
+        <p class="aloj-desc only-es">Vive la experiencia con todas las comodidades de tu casa rodante, en un entorno único bajo el cielo de Tabernas</p>
+        <p class="aloj-desc only-en">Experience it with all the comforts of your motorhome, in a unique setting beneath the Tabernas sky</p>
+        <ul class="aloj-includes">
+          <li><span class="only-es">Espacio habilitado para autocaravanas</span><span class="only-en">Designated motorhome area</span></li>
+          <li><span class="only-es">Acceso a los aseos del parque</span><span class="only-en">Access to the park toilets</span></li>
+          <li><span class="only-es">Seguridad privada durante toda la noche</span><span class="only-en">Private security throughout the night</span></li>
+          <li><span class="only-es">Desayuno al amanecer en el desierto, opcional y con suplemento</span><span class="only-en">Breakfast at sunrise in the desert, optional and available at a supplement</span></li>
+          <li><span class="only-es">Tras el desayuno, disfruta del parque durante todo el día</span><span class="only-en">After breakfast, enjoy the park all day</span></li>
+        </ul>
+        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+          <span class="only-es">Reservar</span>
+          <span class="only-en">Book</span>
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -954,18 +1281,20 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="Logo_Minihollywood_Oasys_Theme_Park_2025-BLANCO.png" alt="MiniHollywood Oasys Theme Park" class="footer-logo">
-        <p class="footer-tagline">Noche en el Desierto · Bajo el Eclipse · 12 Agosto 2026 · Tabernas, Almería</p>
+        <p class="footer-tagline only-es">Noche en el Desierto · Bajo el Eclipse · 12 Agosto 2026 · Tabernas, Almería</p>
+        <p class="footer-tagline only-en">Noche en el Desierto · Under the Eclipse · 12 August 2026 · Tabernas, Almería</p>
       </div>
       <div class="footer-col">
-        <h4>El evento</h4>
+        <h4><span class="only-es">El evento</span><span class="only-en">The event</span></h4>
         <ul>
-          <li><a href="#eclipse">El eclipse</a></li>
-          <li><a href="#programa">Programa</a></li>
-          <li><a href="#alojamiento">Alojamiento</a></li>
+          <li><a href="#eclipse"><span class="only-es">El eclipse</span><span class="only-en">The eclipse</span></a></li>
+          <li><a href="#programa"><span class="only-es">Programa</span><span class="only-en">Programme</span></a></li>
+          <li><a href="#bbq"><span class="only-es">Menú BBQ</span><span class="only-en">BBQ Menu</span></a></li>
+          <li><a href="#alojamiento"><span class="only-es">Tu Noche</span><span class="only-en">Your Night</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Reservas</h4>
+        <h4><span class="only-es">Reservas</span><span class="only-en">Bookings</span></h4>
         <ul>
           <li><a href="mailto:taquilla@minihollywoodoasys.com">taquilla@minihollywoodoasys.com</a></li>
           <li>950 335 335</li>
@@ -988,60 +1317,60 @@
 </button>
 
 <script>
-// ── STARFIELD ──
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
-let stars = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function createStars(count) {
-  stars = [];
+// ── STAR LAYERS (CSS box-shadow technique) ──
+function genStars(count) {
+  const s = [];
   for (let i = 0; i < count; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height * 0.85,
-      r: Math.random() * 1.4 + 0.2,
-      alpha: Math.random() * 0.7 + 0.2,
-      speed: Math.random() * 0.005 + 0.002,
-      phase: Math.random() * Math.PI * 2,
-    });
+    const x = Math.floor(Math.random() * 4000) - 2000;
+    const y = Math.floor(Math.random() * 4000) - 2000;
+    s.push(`${x}px ${y}px #fff`);
+  }
+  return s.join(', ');
+}
+[['sd1a','sd1b',1000],['sd2a','sd2b',400],['sd3a','sd3b',200]].forEach(([a,b,n]) => {
+  const shadow = genStars(n);
+  document.getElementById(a).style.boxShadow = shadow;
+  document.getElementById(b).style.boxShadow = shadow;
+});
+
+// Mouse parallax for stars
+const starsWrap = document.getElementById('starsWrap');
+let tX = 0, tY = 0, cX = 0, cY = 0;
+document.addEventListener('mousemove', e => {
+  tX = -(e.clientX - window.innerWidth / 2) * 0.05;
+  tY = -(e.clientY - window.innerHeight / 2) * 0.05;
+});
+(function parallax() {
+  cX += (tX - cX) * 0.05;
+  cY += (tY - cY) * 0.05;
+  starsWrap.style.transform = `translate(${cX}px,${cY}px)`;
+  requestAnimationFrame(parallax);
+})();
+
+// ── BBQ MENU TOGGLE ──
+function toggleBBQMenu() {
+  const card = document.getElementById('menuCard');
+  const btn = document.getElementById('bbqToggle');
+  const isOpen = card.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  const es = btn.querySelector('.only-es');
+  const en = btn.querySelector('.only-en');
+  if (isOpen) {
+    es.textContent = 'Ocultar menú';
+    en.textContent = 'Hide menu';
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
+  } else {
+    es.textContent = 'Ver menú BBQ';
+    en.textContent = 'See BBQ menu';
   }
 }
-
-let starOpacity = 0.8;
-function drawStars(t) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (const s of stars) {
-    const a = s.alpha * starOpacity * (0.6 + 0.4 * Math.sin(t * s.speed + s.phase));
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(200,220,255,${a})`;
-    ctx.fill();
-  }
-}
-
-let raf;
-function animate(t) {
-  drawStars(t);
-  raf = requestAnimationFrame(animate);
-}
-
-resizeCanvas();
-createStars(320);
-animate(0);
-window.addEventListener('resize', () => { resizeCanvas(); createStars(320); });
 
 // ── SCROLL EFFECTS ──
 const navbar = document.getElementById('navbar');
 const backToTop = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY > 60;
-  navbar.classList.toggle('scrolled', scrolled);
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
   backToTop.classList.toggle('visible', window.scrollY > 500);
 });
 
@@ -1068,14 +1397,69 @@ burger.addEventListener('click', () => {
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
-mobileLinks.forEach(link => {
-  link.addEventListener('click', closeMobileMenu);
+mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
+
+// ── LANGUAGE TOGGLE ──
+const langToggle = document.getElementById('langToggle');
+const htmlEl = document.documentElement;
+
+function setLang(lang) {
+  htmlEl.classList.remove('lang-es', 'lang-en');
+  htmlEl.classList.add('lang-' + lang);
+  htmlEl.setAttribute('lang', lang);
+  localStorage.setItem('nd-lang', lang);
+}
+
+langToggle.addEventListener('click', () => {
+  const isEn = htmlEl.classList.contains('lang-en');
+  setLang(isEn ? 'es' : 'en');
 });
 
-// Cerrar con Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeMobileMenu();
-});
+// Restore saved language (default: es)
+const savedLang = localStorage.getItem('nd-lang');
+if (savedLang === 'en') setLang('en');
+
+// ── TILT CARDS ──
+(function initTiltCards() {
+  const TILT   = 15;
+  const SCALE  = 1.05;
+  const PERSP  = 1200;
+  const DIR    = -1; // "evade": tilts away from cursor
+
+  document.querySelectorAll('.aloj-card').forEach(card => {
+    const spotlight = document.createElement('div');
+    spotlight.className = 'tilt-spotlight';
+    const spotInner = document.createElement('div');
+    spotInner.className = 'tilt-spot-inner';
+    spotlight.appendChild(spotInner);
+    card.appendChild(spotlight);
+
+    card.addEventListener('pointerenter', () => {
+      spotlight.style.opacity = '1';
+      card.style.zIndex = '10';
+    });
+
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const xRot = (py - 0.5) * TILT * 2 * DIR;
+      const yRot = (px - 0.5) * -(TILT * 2) * DIR;
+      card.style.transform =
+        `perspective(${PERSP}px) rotateX(${xRot}deg) rotateY(${yRot}deg) scale3d(${SCALE},${SCALE},${SCALE})`;
+      spotInner.style.left = `${px * 100}%`;
+      spotInner.style.top  = `${py * 100}%`;
+    });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.transform =
+        `perspective(${PERSP}px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)`;
+      spotlight.style.opacity = '0';
+      card.style.zIndex = '';
+    });
+  });
+})();
 
 // ── SCROLL ANIMATIONS ──
 const revealEls = document.querySelectorAll('.reveal, .tl-item');
