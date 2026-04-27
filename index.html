@@ -176,31 +176,61 @@
   }
 
   .eclipse-wrap {
-    position: absolute; top: -44vw; left: 50%; transform: translateX(-50%);
-    width: 110vw; max-width: 1400px;
-    aspect-ratio: 1;
-    z-index: 1;
-    pointer-events: none;
+  position: absolute;
+  top: -700px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 1200px;
+  z-index: 1;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .eclipse-wrap {
+    width: 620px;
+    height: 620px;
+    top: -390px;
   }
-  @media (max-width: 900px) { .eclipse-wrap { width: 74vw; top: -28vw; } }
-  @media (max-width: 600px) { .eclipse-wrap { width: 84vw; top: -32vw; } }
+  .hero-content { 
+    margin-top: 120px; 
+    padding: 0 1rem; 
+  } 
+}
 
-  .moon-body {
-    position: absolute; inset: 0; border-radius: 50%;
-    background: radial-gradient(circle at 38% 35%, #e8e4d8 0%, #ccc8b8 30%, #9a9488 65%, #6a6458 85%, #3a3430 100%);
-    box-shadow: inset -18px -12px 40px rgba(0,0,0,0.6);
-    overflow: hidden;
-  }
-  .moon-image {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    pointer-events: none;
-  }
-  .moon-image.loaded { opacity: 1; }
-  .moon-body.has-image { background: transparent; box-shadow: none; overflow: visible; }
+@media (max-width: 480px) { 
+  .hero-content { 
+    margin-top: 135px; 
+  } 
+}
+.moon-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%, #e8e4d8 0%, #ccc8b8 30%, #9a9488 65%, #6a6458 85%, #3a3430 100%);
+  box-shadow: inset -18px -12px 40px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+.moon-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.moon-image.loaded {
+  opacity: 1;
+}
+
+.moon-body.has-image {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
 
   .horizon {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
