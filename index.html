@@ -3,8 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noche en el Desierto — Bajo el Eclipse | MiniHollywood Oasys</title>
-<meta name="description" content="12 de agosto de 2026. Vive el eclipse solar total desde el desierto de Tabernas. Barbacoa, espectáculo, Perseidas y pernocta bajo el cielo más oscuro de Europa.">
+<title>Noche en el Desierto · Eclipse Solar 12 Agosto 2026, Tabernas | MiniHollywood Oasys</title>
+<meta name="description" content="12 de agosto de 2026. Vive el eclipse solar parcial al atardecer y la lluvia de Perseidas desde el desierto de Tabernas, Almería. Barbacoa, espectáculos y pernocta en MiniHollywood Oasys.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#05070f">
+<meta name="author" content="MiniHollywood Oasys Theme Park">
+<!-- Canonical — actualiza esta URL con la URL final de producción -->
+<link rel="canonical" href="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/">
+<!-- hreflang — bilingüe ES/EN -->
+<link rel="alternate" hreflang="es" href="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/">
+<link rel="alternate" hreflang="en" href="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/">
+<meta property="og:title" content="Noche en el Desierto · Eclipse Solar 12 Agosto 2026 | MiniHollywood Oasys, Tabernas">
+<meta property="og:description" content="Vive el eclipse solar parcial al atardecer y la lluvia de Perseidas desde el desierto de Tabernas. Barbacoa, espectáculos y pernocta bajo el cielo más oscuro de España.">
+<meta property="og:image" content="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/og-noche-eclipse.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Noche en el Desierto — Eclipse Solar 12 Agosto 2026, MiniHollywood Oasys, Tabernas, Almería">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="MiniHollywood Oasys Theme Park">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Noche en el Desierto · Eclipse Solar 12 Agosto 2026 | MiniHollywood Oasys">
+<meta name="twitter:description" content="Vive el eclipse solar parcial al atardecer y la lluvia de Perseidas desde el desierto de Tabernas. Barbacoa, espectáculos y pernocta en MiniHollywood Oasys, Almería.">
+<meta name="twitter:image" content="https://minihollywoodoasys.com/noche-desierto-eclipse-2026/og-noche-eclipse.jpg">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href="Cabecera_2026.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -324,68 +355,32 @@
     .btn-primary, .btn-secondary { padding: 0.8rem 1.8rem; font-size: 0.7rem; }
   }
 
-  /* ── HERO CARDS ── */
-  .hero-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    margin: 2.8rem auto 0;
-    max-width: 920px;
-    width: 100%;
-    background: rgba(192,56,40,0.18);
-    border: 1px solid rgba(192,56,40,0.22);
-  }
-
-  .hcard {
+  /* ── HERO NAV BUTTONS ── */
+  .hero-nav-btns {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-decoration: none;
-    color: var(--text);
-    background: rgba(5,7,15,0.82);
-    backdrop-filter: blur(12px);
-    padding: 1.8rem 1.2rem 1.6rem;
-    gap: 1.2rem;
-    transition: background 0.25s ease;
+    gap: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2.2rem auto 0;
   }
-  .hcard:hover { background: rgba(30,8,8,0.9); }
-
-  .hcard-title {
+  .hero-nav-btn {
+    background: transparent;
+    color: var(--text-dim);
+    padding: 0.6rem 1.5rem;
+    border: 1px solid rgba(240,236,228,0.18);
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    font-size: 0.68rem;
     font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .hero-nav-btn:hover {
     color: var(--gold-light);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .hcard-cta {
-    display: block;
-    width: 100%;
-    padding: 0.6rem 1rem;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border-radius: 3px;
-    transition: background 0.2s;
-  }
-  .hcard:hover .hcard-cta { background: #e8e8e8; }
-
-  @media (max-width: 768px) {
-    .hero-cards { grid-template-columns: repeat(2, 1fr); max-width: 560px; }
-  }
-  @media (max-width: 480px) {
-    .hero-cards { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
-    .hcard { padding: 1.4rem 0.9rem 1.2rem; }
-    .hcard-title { font-size: 0.85rem; }
+    border-color: rgba(212,144,58,0.5);
+    background: rgba(212,144,58,0.06);
   }
 
   .hero-scroll-hint {
@@ -665,6 +660,61 @@
   /* ── SCROLL ANIMATIONS ── */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
   .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── SCREEN READER ONLY ── */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+
+  /* ── HERO H1 ── */
+  .hero-h1 {
+    font-family: var(--font-western);
+    font-size: clamp(1.7rem, 4.4vw, 3.8rem);
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    margin: 0 auto;
+    text-shadow: 0 2px 40px rgba(210,140,50,0.55), 0 0 80px rgba(192,56,40,0.25);
+  }
+  @media (max-width: 600px) {
+    .hero-h1 { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+  }
+
+  /* ── FAQ ── */
+  #faq { padding: 7rem 0; background: linear-gradient(to bottom, var(--bg), #07091a, var(--bg)); }
+  @media (max-width: 768px) { #faq { padding: 4rem 0; } }
+  .faq-header { text-align: center; margin-bottom: 3rem; }
+  .faq-header .section-label { justify-content: center; }
+  .faq-header .section-label::before { display: none; }
+  .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 1px; }
+  .faq-item { border: 1px solid var(--border); background: rgba(5,7,15,0.7); }
+  .faq-item + .faq-item { border-top: none; }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 1.4rem 1.6rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    text-align: left; color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.92rem; font-weight: 600; line-height: 1.5;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--gold-light); }
+  .faq-question[aria-expanded="true"] { color: var(--gold-light); }
+  .faq-icon {
+    flex-shrink: 0; width: 20px; height: 20px;
+    color: var(--brand); transition: transform 0.3s;
+  }
+  .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 1.6rem;
+    font-size: 0.87rem; color: var(--text-dim); line-height: 1.8;
+  }
+  .faq-answer.open { max-height: 400px; padding: 0 1.6rem 1.4rem; }
+  .faq-answer a { color: var(--gold-light); }
 </style>
 </head>
 <body>
@@ -681,7 +731,7 @@
       <span class="only-es">EN</span>
       <span class="only-en">ES</span>
     </button>
-    <a href="https://minihollywoodoasys.com" target="_blank" class="nav-cta">
+    <a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer" class="nav-cta">
       <span class="only-es">Reservar</span>
       <span class="only-en">Book</span>
     </a>
@@ -711,71 +761,55 @@
   <!-- Moon: half visible at top, 20% bigger -->
   <div class="eclipse-wrap">
     <div class="moon-body" id="moonBody">
-      <img src="luna.png" alt="" class="moon-image" id="moonImage" onload="this.classList.add('loaded'); document.getElementById('moonBody').classList.add('has-image');" onerror="this.style.display='none';">
+      <img src="luna.png" alt="Eclipse solar parcial sobre el desierto de Tabernas, 12 agosto 2026" class="moon-image" id="moonImage" onload="this.classList.add('loaded'); document.getElementById('moonBody').classList.add('has-image');" onerror="this.style.display='none';">
     </div>
   </div>
 
   <div class="hero-content">
-    <img src="Cabecera_2026.png" alt="Noche en el Desierto" class="hero-cabecera">
-
-    <p class="hero-lema">
-      <span class="only-es">ECLIPSE SOLAR Y PERSEIDAS</span>
-      <span class="only-en">SOLAR ECLIPSE AND PERSEIDS</span>
-    </p>
+    <h1 class="hero-h1">
+      <span class="only-es">Eclipse Solar y Perseidas<br>en Minihollywood Oasys</span>
+      <span class="only-en">Solar Eclipse & Perseids<br>at Minihollywood Oasys</span>
+    </h1>
 
     <div class="hero-date-badge">
       <div class="date-num">12</div>
       <div class="date-text">
         <div class="date-month"><span class="only-es">Agosto</span><span class="only-en">August</span></div>
         <div class="date-year"><span class="only-es">2026 · Edición especial</span><span class="only-en">2026 · Special edition</span></div>
-        <div class="date-year"><p class="only-es">A partir de las 17:30 h.</p><p class="only-en">From 5:30 p.m.</p></div>
       </div>
       <div class="divider"></div>
       <div class="location">
-        <strong>Minihollywood Oasys</strong>
-        <span class="only-es">Desierto de Tabernas, Almería</span>
-        <span class="only-en">Tabernas Desert, Almería</span>
+        <span class="only-es">A partir de las</span>
+        <span class="only-en">From</span>
+        <strong>17:30 h.</strong>
       </div>
     </div>
 
     <div class="hero-cta-row">
-      <a href="https://minihollywoodoasys.com" target="_blank" class="btn-primary">
+      <a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer" class="btn-primary">
         <span class="only-es">Reservar plaza</span>
         <span class="only-en">Book your place</span>
       </a>
     </div>
 
-    <!-- 4 FEATURE CARDS -->
-    <div class="hero-cards">
-
-      <a href="#eclipse" class="hcard">
-        <div class="hcard-title only-es">Eclipse</div>
-        <div class="hcard-title only-en">Eclipse</div>
-        <div class="hcard-cta only-es">Descubrir más</div>
-        <div class="hcard-cta only-en">Learn more</div>
+    <!-- NAV BUTTONS -->
+    <div class="hero-nav-btns">
+      <a href="#eclipse" class="hero-nav-btn">
+        <span class="only-es">Eclipse</span>
+        <span class="only-en">Eclipse</span>
       </a>
-
-      <a href="#programa" class="hcard">
-        <div class="hcard-title only-es">Programa</div>
-        <div class="hcard-title only-en">Programme</div>
-        <div class="hcard-cta only-es">Ver programa</div>
-        <div class="hcard-cta only-en">See programme</div>
+      <a href="#programa" class="hero-nav-btn">
+        <span class="only-es">Programa</span>
+        <span class="only-en">Programme</span>
       </a>
-
-      <a href="#bbq" class="hcard">
-        <div class="hcard-title only-es">Menú BBQ</div>
-        <div class="hcard-title only-en">BBQ Menu</div>
-        <div class="hcard-cta only-es">Ver menú</div>
-        <div class="hcard-cta only-en">See menu</div>
+      <a href="#bbq" class="hero-nav-btn">
+        <span class="only-es">Menú barbacoa</span>
+        <span class="only-en">Barbecue Menu</span>
       </a>
-
-      <a href="#alojamiento" class="hcard">
-        <div class="hcard-title only-es">Tu Noche</div>
-        <div class="hcard-title only-en">Your Night</div>
-        <div class="hcard-cta only-es">Elegir opción</div>
-        <div class="hcard-cta only-en">Choose option</div>
+      <a href="#alojamiento" class="hero-nav-btn">
+        <span class="only-es">Tu Noche</span>
+        <span class="only-en">Your Night</span>
       </a>
-
     </div>
   </div>
 
@@ -1004,7 +1038,7 @@
       </p>
       <h2 class="section-title">
         <span class="only-es">Menú Barbacoa</span>
-        <span class="only-en">BBQ Menu</span>
+        <span class="only-en">Barbecue Menu</span>
       </h2>
       <p class="section-body only-es">Una parrilla bajo las estrellas del desierto. Carnes a la brasa, guarniciones y el capricho del Sheriff — con bebida incluida hasta el postre.</p>
       <p class="section-body only-en">A grill under the desert stars. Flame-cooked meats, sides and the Sheriff's treat — with drinks included until dessert.</p>
@@ -1014,8 +1048,8 @@
       <div class="menu-card-header">
         <span class="menu-flame"></span>
         <div class="menu-card-title">
-          <span class="only-es">MENÚ BBQ</span>
-          <span class="only-en">BBQ MENU</span>
+          <span class="only-es">MENÚ BARBACOA</span>
+          <span class="only-en">BARBECUE MENU</span>
         </div>
       </div>
 
@@ -1102,14 +1136,14 @@
       <div class="aloj-card">
         <div class="aloj-name"><span class="only-es">Solo la Cena</span><span class="only-en">Dinner Only</span></div>
         <div class="aloj-tagline"><span class="only-es">Sin pernocta</span><span class="only-en">No overnight stay</span></div>
-        <p class="aloj-desc only-es">Disfruta de la cena BBQ, el eclipse y los espectáculos en una noche única, sin necesidad de pernoctar.</p>
+        <p class="aloj-desc only-es">Disfruta de la cena Barbacoa, el eclipse y los espectáculos en una noche única, sin necesidad de pernoctar.</p>
         <p class="aloj-desc only-en">Enjoy a barbecue dinner, the eclipse and the shows on a unique night, with no need to stay overnight.</p>
         <ul class="aloj-includes">
-          <li><span class="only-es">Cena BBQ con menú completo</span><span class="only-en">Full BBQ dinner menu</span></li>
+          <li><span class="only-es">Cena Barbacoa con menú completo</span><span class="only-en">Full barbecue dinner menu</span></li>
           <li><span class="only-es">Eclipse solar y espectáculos del programa</span><span class="only-en">Solar eclipse and programme shows</span></li>
           <li><span class="only-es">Sin pernocta — salida libre a discreción</span><span class="only-en">No overnight stay — depart at your leisure</span></li>
         </ul>
-        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+        <a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
           <span class="only-es">Reservar</span><span class="only-en">Book</span>
         </a>
       </div>
@@ -1126,7 +1160,7 @@
           <li><span class="only-es">Desayuno al amanecer, opcional y con suplemento</span><span class="only-en">Sunrise breakfast, optional at a supplement</span></li>
           <li><span class="only-es">Es necesario traer tu propia tienda de campaña</span><span class="only-en">Guests must bring their own tent</span></li>
         </ul>
-        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+        <a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
           <span class="only-es">Reservar</span><span class="only-en">Book</span>
         </a>
       </div>
@@ -1137,15 +1171,106 @@
         <p class="aloj-desc only-es">Vive la experiencia con todas las comodidades de tu casa rodante, en un entorno único bajo el cielo de Tabernas.</p>
         <p class="aloj-desc only-en">Experience it with all the comforts of your motorhome, in a unique setting beneath the Tabernas sky.</p>
         <ul class="aloj-includes">
-          <li><span class="only-es">Espacio habilitado para autocaravanas</span><span class="only-en">Designated motorhome area</span></li>
+          <li><span class="only-es">Espacio habilitado para autocaravanas (sin puntos de luz ni tomas de agua). </span><span class="only-en">Designated motorhome area (no electrical points or water connections).</span></li>
           <li><span class="only-es">Acceso a los aseos del parque</span><span class="only-en">Access to the park toilets</span></li>
           <li><span class="only-es">Seguridad privada durante toda la noche</span><span class="only-en">Private security throughout the night</span></li>
           <li><span class="only-es">Desayuno al amanecer, opcional y con suplemento</span><span class="only-en">Sunrise breakfast, optional at a supplement</span></li>
           <li><span class="only-es">Tras el desayuno, disfruta del parque durante todo el día</span><span class="only-en">After breakfast, enjoy the park all day</span></li>
         </ul>
-        <a href="https://minihollywoodoasys.com" target="_blank" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
+        <a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="font-size:0.72rem; padding: 0.7rem 1.8rem; margin-top: auto;">
           <span class="only-es">Reservar</span><span class="only-en">Book</span>
         </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-header reveal">
+      <p class="section-label">
+        <span class="only-es">Preguntas frecuentes</span>
+        <span class="only-en">Frequently asked questions</span>
+      </p>
+      <h2 class="section-title">
+        <span class="only-es">¿Tienes dudas?</span>
+        <span class="only-en">Any questions?</span>
+      </h2>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿Cuándo es el eclipse solar de agosto de 2026 en España?</span>
+          <span class="only-en">When is the solar eclipse of August 2026 in Spain?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">El 12 de agosto de 2026. Desde el desierto de Tabernas (Almería), el eclipse comenzará a las 19:37 h y alcanzará su punto máximo a las 20:32 h, con el sol parcialmente eclipsado muy cerca del horizonte al atardecer.</p>
+          <p class="only-en">On 12 August 2026. From the Tabernas Desert (Almería), the eclipse will begin at 19:37 and reach its peak at 20:32, with the sun partially eclipsed very close to the horizon at sunset.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿El eclipse solar de 2026 es total o parcial?</span>
+          <span class="only-en">Is the 2026 solar eclipse total or partial?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">Desde España es un eclipse parcial muy avanzado. El sol aparecerá cubierto en gran parte por la luna al atardecer, creando un espectáculo visual extraordinario sobre el horizonte del desierto de Tabernas.</p>
+          <p class="only-en">From Spain it is a highly advanced partial eclipse. The sun will appear largely covered by the moon at sunset, creating an extraordinary spectacle over the Tabernas Desert horizon.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿Qué incluye la entrada a Noche en el Desierto 2026?</span>
+          <span class="only-en">What does the Noche en el Desierto 2026 ticket include?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">Incluye: acceso al parque desde las 17:30 h, gafas certificadas ISO 12312-2 para el eclipse, talleres en familia, espectáculo western y de cetrería, cena barbacoa completa (carnes, guarniciones y postre con bebida incluida) y observación de las Perseidas durante la madrugada. La pernocta es opcional según la modalidad elegida.</p>
+          <p class="only-en">Includes: park access from 5:30 pm, ISO 12312-2-certified eclipse glasses, family workshops, western and falconry shows, full barbecue dinner (meats, sides and dessert with drinks included) and Perseid meteor shower viewing. Overnight stay is optional depending on the chosen option.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿Cuándo es el pico de las Perseidas en 2026?</span>
+          <span class="only-en">When is the Perseid meteor shower peak in 2026?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">El pico de las Perseidas 2026 coincide con la noche del 12 al 13 de agosto. El mejor momento de observación será durante la madrugada, desde los cielos del desierto de Tabernas, con más de 300 noches despejadas al año y muy baja contaminación lumínica.</p>
+          <p class="only-en">The 2026 Perseid peak falls on the night of 12 to 13 August. The best observation window will be in the early hours of the morning, from the skies above the Tabernas Desert, which enjoys more than 300 clear nights a year and very low light pollution.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿Hay opción de pernoctar en el evento?</span>
+          <span class="only-en">Is there an option to stay overnight at the event?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">Sí. Puedes elegir entre tres modalidades: Solo la Cena (sin pernocta), Tienda de Campaña (traes la tuya propia; zona habilitada, aseos y seguridad) o Autocaravana (espacio sin luz ni agua). Las dos últimas incluyen opción de desayuno buffet al amanecer (con suplemento) y acceso al parque todo el día siguiente.</p>
+          <p class="only-en">Yes. You can choose from three options: Dinner Only (no overnight), Tent (bring your own; designated area, toilets and security) or Motorhome (area without electrical or water connections). Both overnight options include an optional sunrise buffet breakfast (at a supplement) and full park access the following day.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="only-es">¿Cómo llegar a MiniHollywood Oasys en Tabernas, Almería?</span>
+          <span class="only-en">How to get to MiniHollywood Oasys in Tabernas, Almería?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer" role="region">
+          <p class="only-es">MiniHollywood Oasys se encuentra en la Carretera N-340, km 464, Tabernas (Almería), a unos 30 km al norte de la capital almeriense. Para reservas e información: <a href="tel:+34950335335">950 335 335</a> o <a href="mailto:taquilla@minihollywoodoasys.com">taquilla@minihollywoodoasys.com</a>.</p>
+          <p class="only-en">MiniHollywood Oasys is located on Carretera N-340, km 464, Tabernas (Almería), about 30 km north of Almería city. For bookings and information: <a href="tel:+34950335335">+34 950 335 335</a> or <a href="mailto:taquilla@minihollywoodoasys.com">taquilla@minihollywoodoasys.com</a>.</p>
+        </div>
       </div>
 
     </div>
@@ -1166,7 +1291,7 @@
         <ul>
           <li><a href="#eclipse"><span class="only-es">El eclipse</span><span class="only-en">The eclipse</span></a></li>
           <li><a href="#programa"><span class="only-es">Programa</span><span class="only-en">Programme</span></a></li>
-          <li><a href="#bbq"><span class="only-es">Menú BBQ</span><span class="only-en">BBQ Menu</span></a></li>
+          <li><a href="#bbq"><span class="only-es">Menú Barbacoa</span><span class="only-en">Barbecue Menu</span></a></li>
           <li><a href="#alojamiento"><span class="only-es">Tu Noche</span><span class="only-en">Your Night</span></a></li>
         </ul>
       </div>
@@ -1181,7 +1306,7 @@
     </div>
     <div class="footer-bottom">
       <p>© 2026 MiniHollywood Oasys Theme Park · Tabernas, Almería</p>
-      <p><a href="https://minihollywoodoasys.com" target="_blank">minihollywoodoasys.com</a></p>
+      <p><a href="https://minihollywoodoasys.com" target="_blank" rel="noopener noreferrer">minihollywoodoasys.com</a></p>
     </div>
   </div>
 </footer>
@@ -1280,6 +1405,150 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal, .tl-item').forEach(el => observer.observe(el));
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-question').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      btn.nextElementSibling.classList.add('open');
+    }
+  });
+});
+</script>
+
+<!-- JSON-LD Structured Data — Event + FAQPage + Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Event",
+      "@id": "https://minihollywoodoasys.com/noche-desierto-eclipse-2026/#event",
+      "name": "Noche en el Desierto — Bajo el Eclipse",
+      "startDate": "2026-08-12T17:30:00+02:00",
+      "endDate": "2026-08-13T10:00:00+02:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "description": "El 12 de agosto de 2026, vive el eclipse solar parcial al atardecer y la lluvia de Perseidas desde el desierto de Tabernas, Almería. Barbacoa, espectáculos western, cetrería y pernocta en MiniHollywood Oasys.",
+      "image": "https://minihollywoodoasys.com/noche-desierto-eclipse-2026/og-noche-eclipse.jpg",
+      "url": "https://minihollywoodoasys.com/noche-desierto-eclipse-2026/",
+      "inLanguage": ["es", "en"],
+      "keywords": "eclipse solar 2026, Perseidas 2026, noche en el desierto, Tabernas, Almería, MiniHollywood Oasys, barbacoa bajo las estrellas, observación astronómica, eclipse agosto 2026 España",
+      "location": {
+        "@type": "Place",
+        "name": "MiniHollywood Oasys Theme Park",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Carretera N-340, km 464",
+          "addressLocality": "Tabernas",
+          "addressRegion": "Almería",
+          "postalCode": "04200",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 37.0522,
+          "longitude": -2.3614
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "@id": "https://minihollywoodoasys.com/#organization",
+        "name": "MiniHollywood Oasys Theme Park",
+        "url": "https://minihollywoodoasys.com",
+        "telephone": "+34950335335",
+        "email": "taquilla@minihollywoodoasys.com"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://minihollywoodoasys.com",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-01-01T00:00:00+01:00",
+        "priceCurrency": "EUR",
+        "seller": {
+          "@type": "Organization",
+          "name": "MiniHollywood Oasys Theme Park"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuándo es el eclipse solar de agosto de 2026 en España?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El 12 de agosto de 2026. Desde el desierto de Tabernas (Almería), el eclipse comenzará a las 19:37 h y alcanzará su punto máximo a las 20:32 h, con el sol parcialmente eclipsado muy cerca del horizonte al atardecer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El eclipse solar de 2026 es total o parcial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Desde España es un eclipse parcial muy avanzado. El sol aparecerá cubierto en gran parte por la luna al atardecer, creando un espectáculo visual extraordinario sobre el horizonte del desierto de Tabernas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué incluye la entrada a Noche en el Desierto 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Incluye: acceso al parque desde las 17:30 h, gafas certificadas ISO 12312-2 para el eclipse, talleres en familia, espectáculo western y de cetrería, cena barbacoa completa (carnes, guarniciones y postre con bebida incluida) y observación de las Perseidas durante la madrugada. La pernocta es opcional según la modalidad elegida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuándo es el pico de las Perseidas en 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El pico de las Perseidas 2026 coincide con la noche del 12 al 13 de agosto. El mejor momento de observación será durante la madrugada, desde los cielos del desierto de Tabernas, con más de 300 noches despejadas al año y muy baja contaminación lumínica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hay opción de pernoctar en la Noche en el Desierto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, hay tres modalidades: Solo la Cena (sin pernocta), Tienda de Campaña (traes la tuya propia; zona habilitada, aseos y seguridad privada) y Autocaravana (espacio sin puntos de luz ni agua). Las dos últimas incluyen opción de desayuno buffet al amanecer con suplemento y acceso al parque todo el día siguiente."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo llegar a MiniHollywood Oasys en Tabernas, Almería?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MiniHollywood Oasys se encuentra en la Carretera N-340, km 464, Tabernas (Almería), a unos 30 km al norte de la capital almeriense. Coordenadas GPS: 37.0522, -2.3614. Para reservas: 950 335 335 o taquilla@minihollywoodoasys.com."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://minihollywoodoasys.com/#organization",
+      "name": "MiniHollywood Oasys Theme Park",
+      "url": "https://minihollywoodoasys.com",
+      "logo": "https://minihollywoodoasys.com/Logo_Minihollywood_Oasys_Theme_Park_2025-BLANCO.png",
+      "telephone": "+34950335335",
+      "email": "taquilla@minihollywoodoasys.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carretera N-340, km 464",
+        "addressLocality": "Tabernas",
+        "addressRegion": "Almería",
+        "postalCode": "04200",
+        "addressCountry": "ES"
+      }
+    }
+  ]
+}
 </script>
 </body>
 </html>
